@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,9 +15,13 @@
 		3639656226F10FD500F6A86D /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656126F10FD500F6A86D /* TasksViewController.swift */; };
 		3639656426F1103300F6A86D /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656326F1103300F6A86D /* TaskListViewController.swift */; };
 		3639656926F113F300F6A86D /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656826F113F300F6A86D /* AlertController.swift */; };
+		369085DA26F1366800ED877E /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085D926F1366800ED877E /* TaskList.swift */; };
+		369085DC26F1397000ED877E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085DB26F1397000ED877E /* StorageManager.swift */; };
+		6F9C5340A586459A4E41C2BC /* Pods_GymAssist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7AB73D71C644BC84D891DB /* Pods_GymAssist.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B7430C14FE123BD9284F923 /* Pods-GymAssist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymAssist.release.xcconfig"; path = "Target Support Files/Pods-GymAssist/Pods-GymAssist.release.xcconfig"; sourceTree = "<group>"; };
 		3639654A26F10D2900F6A86D /* GymAssist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymAssist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3639654D26F10D2900F6A86D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3639654F26F10D2900F6A86D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +32,10 @@
 		3639656126F10FD500F6A86D /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		3639656326F1103300F6A86D /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		3639656826F113F300F6A86D /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		369085D926F1366800ED877E /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		369085DB26F1397000ED877E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		71EA0E392B812A31DDB6AFD1 /* Pods-GymAssist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymAssist.debug.xcconfig"; path = "Target Support Files/Pods-GymAssist/Pods-GymAssist.debug.xcconfig"; sourceTree = "<group>"; };
+		DE7AB73D71C644BC84D891DB /* Pods_GymAssist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GymAssist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F9C5340A586459A4E41C2BC /* Pods_GymAssist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +55,8 @@
 			children = (
 				3639654C26F10D2900F6A86D /* GymAssist */,
 				3639654B26F10D2900F6A86D /* Products */,
+				8130E6CB16FCABA2EC107768 /* Pods */,
+				A7888CC4F94DC119CEEA15F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +97,7 @@
 		3639656626F1109F00F6A86D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				369085D926F1366800ED877E /* TaskList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -93,8 +105,26 @@
 		3639656726F110E400F6A86D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				369085DB26F1397000ED877E /* StorageManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		8130E6CB16FCABA2EC107768 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71EA0E392B812A31DDB6AFD1 /* Pods-GymAssist.debug.xcconfig */,
+				2B7430C14FE123BD9284F923 /* Pods-GymAssist.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A7888CC4F94DC119CEEA15F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE7AB73D71C644BC84D891DB /* Pods_GymAssist.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3639655E26F10D2B00F6A86D /* Build configuration list for PBXNativeTarget "GymAssist" */;
 			buildPhases = (
+				F5373946ABAA477219F81EA5 /* [CP] Check Pods Manifest.lock */,
 				3639654626F10D2900F6A86D /* Sources */,
 				3639654726F10D2900F6A86D /* Frameworks */,
 				3639654826F10D2900F6A86D /* Resources */,
+				CE5802554C9A5AC88673C184 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,13 +194,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CE5802554C9A5AC88673C184 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GymAssist/Pods-GymAssist-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GymAssist/Pods-GymAssist-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GymAssist/Pods-GymAssist-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5373946ABAA477219F81EA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GymAssist-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3639654626F10D2900F6A86D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				369085DA26F1366800ED877E /* TaskList.swift in Sources */,
 				3639654E26F10D2900F6A86D /* AppDelegate.swift in Sources */,
 				3639656926F113F300F6A86D /* AlertController.swift in Sources */,
+				369085DC26F1397000ED877E /* StorageManager.swift in Sources */,
 				3639656426F1103300F6A86D /* TaskListViewController.swift in Sources */,
 				3639655026F10D2900F6A86D /* SceneDelegate.swift in Sources */,
 				3639656226F10FD500F6A86D /* TasksViewController.swift in Sources */,
@@ -315,6 +391,7 @@
 		};
 		3639655F26F10D2B00F6A86D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71EA0E392B812A31DDB6AFD1 /* Pods-GymAssist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -333,6 +410,7 @@
 		};
 		3639656026F10D2B00F6A86D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B7430C14FE123BD9284F923 /* Pods-GymAssist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
