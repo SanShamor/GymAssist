@@ -13,31 +13,34 @@ class TaskListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        taskLists = StorageManager.shared.realm.objects(TaskList.self)
+        createTestData()
+        //taskLists = StorageManager.shared.realm.objects(TaskList.self)
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        taskLists.count
+        //taskLists.count
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
-        let taskList = taskLists[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = taskList.name
-        content.secondaryText = "\(taskList.tasks.count)"
-        cell.contentConfiguration = content
+        //let taskList = taskLists[indexPath.row]
+        //var content = cell.defaultContentConfiguration()
+        //content.text = taskList.name
+        //content.secondaryText = "\(taskList.tasks.count)"
+        //cell.contentConfiguration = content
         return cell
     }
-    
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         guard let tasksVC = segue.destination as? TasksViewController else { return }
         let taskList = taskLists[indexPath.row]
+        tasksVC.taskList = taskList
+
     }
-    
+    */
     @IBAction func addButtonPressed(_ sender: Any) {
         showAlert()
     }
@@ -49,22 +52,29 @@ class TaskListViewController: UITableViewController {
         let shoppingList = TaskList()
         shoppingList.name = "Силовая треня"
         
-        let moviesList = TaskList(value: ["Кардио треня", Date(), [["Best film ever"], ["The best of the best", "Must have", Date(), true]]])
-        
         let milk = Task()
-        milk.name = "Гантели"
-        milk.note = "8Kg"
+        milk.name = "Milk"
+        milk.note = "2L"
         
-        let bread = Task(value: ["Подтягивания", "", Date(), true])
-        let apples = Task(value: ["name": "Жим штанги", "note": "10Kg"])
+        let bread = Task(value: ["Bread", "", Date(), true])
+        let apples = Task(value: ["name": "Apples", "note": "2Kg"])
+        
+        let moviesList = TaskList()
+        moviesList.name = "Гантельная треня"
+        
+        let film = Task(value: ["The best of the best", "Must have", Date(), true])
+        let anotherFilm = Task(value: ["name": "Best film ever"])
+        //let moviesList = TaskList(value: ["Movies List", Date(), [["Best film ever"], ["The best of the best", "Must have", Date(), true]]])
         
         shoppingList.tasks.append(milk)
         shoppingList.tasks.insert(contentsOf: [bread, apples], at: 1)
+        moviesList.tasks.insert(contentsOf: [film, anotherFilm], at: 0)
         
         DispatchQueue.main.async {
             StorageManager.shared.save(taskLists: [shoppingList, moviesList])
         }
     }
+    
 }
 
 extension TaskListViewController {
