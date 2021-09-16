@@ -28,7 +28,7 @@ extension UIAlertController {
         addAction(saveAction)
         addAction(cancelAction)
         addTextField { textField in
-            textField.placeholder = "List Name"
+            textField.placeholder = "Название"
             textField.text = taskList?.name
         }
     }
@@ -54,12 +54,12 @@ extension UIAlertController {
         addAction(cancelAction)
         
         addTextField { textField in
-            textField.placeholder = "New task"
+            textField.placeholder = "Название упражнения"
             textField.text = task?.name
         }
         
         addTextField { textField in
-            textField.placeholder = "Note"
+            textField.placeholder = "Вес / Колличество повторений"
             textField.text = task?.note
         }
     }

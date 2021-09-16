@@ -18,28 +18,28 @@ class DataManager {
             
             UserDefaults.standard.set(true, forKey: "done")
             
-            let shoppingList = TaskList()
-            shoppingList.name = "Силовая треня"
+            let cardioTraining = TaskList()
+            cardioTraining.name = "Кардио + пресс"
             
-            let milk = Task()
-            milk.name = "Milk"
-            milk.note = "2L"
+            let jogging = Task()
+            jogging.name = "Бег"
+            jogging.note = "5км"
             
-            let bread = Task(value: ["Bread", "", Date(), true])
-            let apples = Task(value: ["name": "Apples", "note": "2Kg"])
+            let twisting = Task(value: ["Русские скручивания", "10 + 10", Date(), true])
+            let apples = Task(value: ["name": "Подъем ног", "note": "12"])
             
-            let moviesList = TaskList()
-            moviesList.name = "Гантельная треня"
+            let strengthTraining = TaskList()
+            strengthTraining.name = "Треня на руки"
             
-            let film = Task(value: ["The best of the best", "Must have", Date(), true])
-            let anotherFilm = Task(value: ["name": "Best film ever"])
+            let barbellBench = Task(value: ["Жим штанги", "5 + 5", Date(), true])
+            let anotherFilm = Task(value: ["name": "Подтягивания", "note": "10"])
             
-            shoppingList.tasks.append(milk)
-            shoppingList.tasks.insert(contentsOf: [bread, apples], at: 1)
-            moviesList.tasks.insert(contentsOf: [film, anotherFilm], at: 0)
+            cardioTraining.tasks.append(jogging)
+            cardioTraining.tasks.insert(contentsOf: [twisting, apples], at: 1)
+            strengthTraining.tasks.insert(contentsOf: [barbellBench, anotherFilm], at: 0)
             
             DispatchQueue.main.async {
-                StorageManager.shared.save(taskLists: [shoppingList, moviesList])
+                StorageManager.shared.save(taskLists: [cardioTraining, strengthTraining])
                 completion()
                 
             }

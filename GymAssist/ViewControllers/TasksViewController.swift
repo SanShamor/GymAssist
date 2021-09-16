@@ -39,7 +39,7 @@ class TasksViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        section == 0 ? "CURRENT TASKS" : "COMPLETED TASKS"
+        section == 0 ? "Невыполненные упражнения" : "Выполненные упражнения"
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,9 +99,9 @@ class TasksViewController: UITableViewController {
 extension TasksViewController {
     
     private func showAlert(with task: Task? = nil, completion: (() -> Void)? = nil) {
-        let title = task != nil ? "Edit Task" : "New Task"
+        let title = task != nil ? "Изменение задачи" : "Новое упражнение"
         
-        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "What do you want to do?")
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Введите данные")
         
         alert.action(with: task) { newValue, note in
             if let task = task, let completion = completion {

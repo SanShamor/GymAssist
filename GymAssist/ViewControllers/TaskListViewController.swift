@@ -57,9 +57,9 @@ class TaskListViewController: UITableViewController {
 extension TaskListViewController {
     
     private func showAlert(with taskList: TaskList? = nil, completion: (() -> Void)? = nil) {
-        let title = taskList != nil ? "Edit List" : "New List"
+        let title = taskList != nil ? "Изменить программу" : "Новая программа"
         
-        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Please set title for new task list")
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Укажите название тренировки")
         
         alert.action(with: taskList) { newValue in
             if let taskList = taskList, let completion = completion {
