@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3611079126F3D12200EC9E91 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611079026F3D12200EC9E91 /* DataManager.swift */; };
+		3611079326F3D71600EC9E91 /* Extension + UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611079226F3D71600EC9E91 /* Extension + UITableViewCell.swift */; };
 		3639654E26F10D2900F6A86D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639654D26F10D2900F6A86D /* AppDelegate.swift */; };
 		3639655026F10D2900F6A86D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639654F26F10D2900F6A86D /* SceneDelegate.swift */; };
 		3639655526F10D2900F6A86D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3639655326F10D2900F6A86D /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		2B7430C14FE123BD9284F923 /* Pods-GymAssist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymAssist.release.xcconfig"; path = "Target Support Files/Pods-GymAssist/Pods-GymAssist.release.xcconfig"; sourceTree = "<group>"; };
+		3611079026F3D12200EC9E91 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3611079226F3D71600EC9E91 /* Extension + UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITableViewCell.swift"; sourceTree = "<group>"; };
 		3639654A26F10D2900F6A86D /* GymAssist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymAssist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3639654D26F10D2900F6A86D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3639654F26F10D2900F6A86D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 				3639656326F1103300F6A86D /* TaskListViewController.swift */,
 				3639656126F10FD500F6A86D /* TasksViewController.swift */,
 				3639656826F113F300F6A86D /* AlertController.swift */,
+				3611079226F3D71600EC9E91 /* Extension + UITableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				369085DB26F1397000ED877E /* StorageManager.swift */,
+				3611079026F3D12200EC9E91 /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -242,10 +248,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				369085DA26F1366800ED877E /* TaskList.swift in Sources */,
+				3611079126F3D12200EC9E91 /* DataManager.swift in Sources */,
 				3639654E26F10D2900F6A86D /* AppDelegate.swift in Sources */,
 				3639656926F113F300F6A86D /* AlertController.swift in Sources */,
 				369085DC26F1397000ED877E /* StorageManager.swift in Sources */,
 				3639656426F1103300F6A86D /* TaskListViewController.swift in Sources */,
+				3611079326F3D71600EC9E91 /* Extension + UITableViewCell.swift in Sources */,
 				3639655026F10D2900F6A86D /* SceneDelegate.swift in Sources */,
 				3639656226F10FD500F6A86D /* TasksViewController.swift in Sources */,
 			);
