@@ -19,20 +19,25 @@ class DetailTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startStopButton.setTitleColor(UIColor.green, for: .normal)
+        startStopButton.setTitleColor(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), for: .normal)
+        startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+        resetButton.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
     }
     
     @IBAction func startStopTapped(_ sender: Any) {
         if timerCounting {
             timerCounting = false
+            timerLabel.textColor = .red
             timer.invalidate()
             startStopButton.setTitle("START", for: .normal )
-            startStopButton.setTitleColor(UIColor.green, for: .normal)
-
+            startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
+            startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
         } else {
             timerCounting = true
             startStopButton.setTitle("STOP", for: .normal)
+            timerLabel.textColor = .black
             startStopButton.setTitleColor(UIColor.red, for: .normal)
+            startStopButton.backgroundColor = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
         }
     }
@@ -44,8 +49,10 @@ class DetailTaskViewController: UIViewController {
             self.count = 0
             self.timer.invalidate()
             self.timerLabel.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
+            self.timerLabel.textColor = .black
             self.startStopButton.setTitle("START", for: .normal )
-            self.startStopButton.setTitleColor(UIColor.green, for: .normal)
+            self.startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
+            self.startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
         }))
         
         alert.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: { (_) in

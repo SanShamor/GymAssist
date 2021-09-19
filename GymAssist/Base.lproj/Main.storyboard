@@ -112,7 +112,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <segue destination="RmJ-Gx-7RQ" kind="showDetail" id="bCV-5s-ZXm"/>
+                                    <segue destination="RmJ-Gx-7RQ" kind="show" id="cDv-J0-GHB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -136,43 +136,62 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZV-a8-WaU">
-                                <rect key="frame" x="95" y="79" width="224.5" height="54"/>
+                                <rect key="frame" x="95" y="123" width="224.5" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yq-xZ-gmE">
-                                <rect key="frame" x="0.0" y="163" width="207" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <rect key="frame" x="15" y="207" width="174.5" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="START"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startStopTapped:" destination="RmJ-Gx-7RQ" eventType="touchUpInside" id="qaX-QT-Mqa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeB-eL-ZnE">
-                                <rect key="frame" x="207" y="163" width="207" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <rect key="frame" x="224.5" y="207" width="174.5" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="RESET">
                                     <color key="titleColor" systemColor="systemBlueColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="resetTapped:" destination="RmJ-Gx-7RQ" eventType="touchUpInside" id="sCB-9g-BcZ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise will be here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSr-ni-R81">
+                                <rect key="frame" x="111.5" y="317" width="191.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vo8-J6-wKu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yeB-eL-ZnE" firstAttribute="top" secondItem="oZV-a8-WaU" secondAttribute="bottom" constant="30" id="3sI-MZ-lhe"/>
-                            <constraint firstItem="0yq-xZ-gmE" firstAttribute="leading" secondItem="vo8-J6-wKu" secondAttribute="leading" id="4lr-je-ac2"/>
+                            <constraint firstItem="0yq-xZ-gmE" firstAttribute="leading" secondItem="vo8-J6-wKu" secondAttribute="leading" constant="15" id="4lr-je-ac2"/>
                             <constraint firstItem="0yq-xZ-gmE" firstAttribute="centerY" secondItem="yeB-eL-ZnE" secondAttribute="centerY" id="5jx-yT-YbN"/>
+                            <constraint firstItem="eSr-ni-R81" firstAttribute="centerX" secondItem="hhH-uW-LYe" secondAttribute="centerX" id="Oe2-b1-N1Y"/>
                             <constraint firstItem="oZV-a8-WaU" firstAttribute="top" secondItem="vo8-J6-wKu" secondAttribute="top" constant="35" id="U4e-mm-BHs"/>
-                            <constraint firstItem="vo8-J6-wKu" firstAttribute="trailing" secondItem="yeB-eL-ZnE" secondAttribute="trailing" id="UQX-aM-Ix8"/>
+                            <constraint firstItem="vo8-J6-wKu" firstAttribute="trailing" secondItem="yeB-eL-ZnE" secondAttribute="trailing" constant="15" id="UQX-aM-Ix8"/>
                             <constraint firstItem="yeB-eL-ZnE" firstAttribute="width" secondItem="0yq-xZ-gmE" secondAttribute="width" id="WfK-7F-RTH"/>
                             <constraint firstItem="oZV-a8-WaU" firstAttribute="centerX" secondItem="hhH-uW-LYe" secondAttribute="centerX" id="WoY-ps-YZr"/>
-                            <constraint firstItem="yeB-eL-ZnE" firstAttribute="leading" secondItem="0yq-xZ-gmE" secondAttribute="trailing" id="q8n-Oo-fFE"/>
+                            <constraint firstItem="yeB-eL-ZnE" firstAttribute="leading" secondItem="0yq-xZ-gmE" secondAttribute="trailing" constant="35" id="q8n-Oo-fFE"/>
+                            <constraint firstItem="eSr-ni-R81" firstAttribute="top" secondItem="0yq-xZ-gmE" secondAttribute="bottom" constant="65" id="zo1-F9-zw0"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="sBE-zW-NKp"/>
                     <connections>
                         <outlet property="resetButton" destination="yeB-eL-ZnE" id="bgO-Dn-0Lt"/>
                         <outlet property="startStopButton" destination="0yq-xZ-gmE" id="0Vn-Mr-YZc"/>
@@ -181,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOR-Mq-hdR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918.840579710145" y="-74.330357142857139"/>
+            <point key="canvasLocation" x="1889.8550724637682" y="-74.330357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Dl3-3q-Mdf">
@@ -208,9 +227,6 @@
     </scenes>
     <color key="tintColor" red="0.9222512786" green="0.5376990452" blue="0.001868483321" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
