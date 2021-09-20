@@ -90,6 +90,12 @@ class TasksViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [doneAction, editAction, deleteAction])
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailTaskVC = segue.destination as! DetailTaskViewController
+        detailTaskVC.exercise = taskList
+        
+    }
+    
     @objc private func addButtonPressed() {
         showAlert()
     }

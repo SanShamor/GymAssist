@@ -5,20 +5,34 @@
 //  Created by Александр on 19.09.2021.
 //
 
-import UIKit
+import RealmSwift
 
 class DetailTaskViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var exerciseDetailLabel: UILabel!
     
+    var exercise: TaskList!
     var timer: Timer = Timer()
     var count: Int = 0
     var timerCounting: Bool = false
     
+    func reforge(taskList: TaskList) -> [String] {
+        //let counting = taskList.tasks.count
+        for task in taskList.tasks {
+            proto.append(task.name)
+        }
+        return proto
+    }
+    
+    var proto: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        reforge(taskList: exercise)
+        exerciseDetailLabel.text = "\(proto)"
         startStopButton.setTitleColor(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), for: .normal)
         startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
         resetButton.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
@@ -83,4 +97,6 @@ class DetailTaskViewController: UIViewController {
         timeString += String(format: "%02d", seconds)
         return timeString
     }
+    
+    
 }
