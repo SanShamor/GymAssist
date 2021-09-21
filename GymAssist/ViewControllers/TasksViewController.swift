@@ -92,7 +92,7 @@ class TasksViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailTaskVC = segue.destination as! DetailTaskViewController
-        detailTaskVC.exercise = taskList
+        detailTaskVC.usersExercises = taskList
         
     }
     

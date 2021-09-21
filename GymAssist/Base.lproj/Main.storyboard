@@ -169,10 +169,16 @@
                                     <action selector="resetTapped:" destination="RmJ-Gx-7RQ" eventType="touchUpInside" id="sCB-9g-BcZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise will be here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSr-ni-R81">
-                                <rect key="frame" x="35" y="367" width="358" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSr-ni-R81">
+                                <rect key="frame" x="35" y="367" width="358" height="80"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Exercise will be here">
+                                        <attributes>
+                                            <font key="NSFont" size="40" name="Rockwell-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OlY-sb-115">
@@ -181,6 +187,9 @@
                                     <constraint firstAttribute="height" constant="70" id="jc3-fM-F82"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="arrowtriangle.backward.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="previousExerciseButtonTapped:" destination="RmJ-Gx-7RQ" eventType="touchUpInside" id="ckq-8m-C1X"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIU-Lp-EY9">
                                 <rect key="frame" x="318" y="754.66666666666663" width="70" height="65"/>
@@ -189,7 +198,21 @@
                                     <constraint firstAttribute="height" constant="70" id="fsc-28-DKj"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="arrowtriangle.right.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="nextExerciseButtonTapped:" destination="RmJ-Gx-7RQ" eventType="touchUpInside" id="sIw-gG-h63"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5P-PY-lJD">
+                                <rect key="frame" x="174" y="477" width="80.333333333333314" height="35"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <font key="NSFont" size="30" name="ArialRoundedMTBold"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vo8-J6-wKu"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -206,15 +229,18 @@
                             <constraint firstItem="yeB-eL-ZnE" firstAttribute="width" secondItem="0yq-xZ-gmE" secondAttribute="width" id="WfK-7F-RTH"/>
                             <constraint firstItem="oZV-a8-WaU" firstAttribute="centerX" secondItem="hhH-uW-LYe" secondAttribute="centerX" id="WoY-ps-YZr"/>
                             <constraint firstItem="OlY-sb-115" firstAttribute="centerY" secondItem="BIU-Lp-EY9" secondAttribute="centerY" id="XjE-JY-79m"/>
+                            <constraint firstItem="r5P-PY-lJD" firstAttribute="top" secondItem="eSr-ni-R81" secondAttribute="bottom" constant="30" id="dzh-mm-6Jy"/>
                             <constraint firstItem="OlY-sb-115" firstAttribute="leading" secondItem="vo8-J6-wKu" secondAttribute="leading" constant="40" id="pry-iT-Ydl"/>
                             <constraint firstItem="yeB-eL-ZnE" firstAttribute="leading" secondItem="0yq-xZ-gmE" secondAttribute="trailing" constant="35" id="q8n-Oo-fFE"/>
                             <constraint firstItem="BIU-Lp-EY9" firstAttribute="width" secondItem="OlY-sb-115" secondAttribute="width" id="scE-Ut-Qk1"/>
+                            <constraint firstItem="r5P-PY-lJD" firstAttribute="centerX" secondItem="hhH-uW-LYe" secondAttribute="centerX" id="xdU-dU-pnq"/>
                             <constraint firstItem="vo8-J6-wKu" firstAttribute="bottom" secondItem="BIU-Lp-EY9" secondAttribute="bottom" constant="70" id="yv0-jm-T1n"/>
                             <constraint firstItem="eSr-ni-R81" firstAttribute="top" secondItem="0yq-xZ-gmE" secondAttribute="bottom" constant="115" id="zo1-F9-zw0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="sBE-zW-NKp"/>
                     <connections>
+                        <outlet property="exerciseDescriptionLabel" destination="r5P-PY-lJD" id="OBs-dC-z2c"/>
                         <outlet property="exerciseDetailLabel" destination="eSr-ni-R81" id="Zk2-6Y-5Gx"/>
                         <outlet property="resetButton" destination="yeB-eL-ZnE" id="bgO-Dn-0Lt"/>
                         <outlet property="startStopButton" destination="0yq-xZ-gmE" id="0Vn-Mr-YZc"/>
@@ -223,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOR-Mq-hdR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1889.8550724637682" y="-74.330357142857139"/>
+            <point key="canvasLocation" x="1889.7196261682243" y="-74.514038876889856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Dl3-3q-Mdf">
