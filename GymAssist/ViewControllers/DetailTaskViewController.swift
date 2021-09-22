@@ -14,74 +14,44 @@ class DetailTaskViewController: UIViewController {
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var exerciseDetailLabel: UILabel!
     @IBOutlet weak var exerciseDescriptionLabel: UILabel!
+    @IBOutlet weak var roundsCountTF: UITextField!
+    @IBOutlet weak var testLabel: UILabel!
     
     var usersExercises: TaskList!
     
-    var timer: Timer = Timer()
-    var count: Int = 0
-    var timerCounting: Bool = false
+    private var exerciseNames: [String] = []
+    private var exerciseDescription: [String] = []
+    private var exerciseNumberInList = 0
+    private var roundsCount: Int!
+    private var finishedRounds = 0
     
-    var names: [String] = []
-    var descriptions: [String] = []
-    var countExercise = 0
-    
+    private var timer: Timer = Timer()
+    private var count: Int = 0
+    private var timerCounting: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        names = getExercises(taskList: usersExercises)
-        exerciseDetailLabel.text = "\n\(names[countExercise])"
-        descriptions = getDescriptions(taskList: usersExercises)
-        exerciseDescriptionLabel.text = "\(descriptions[countExercise])"
+        exerciseNames = getExercises(taskList: usersExercises)
+        exerciseDetailLabel.text = "\n\(exerciseNames[exerciseNumberInList])"
+        exerciseDescription = getDescriptions(taskList: usersExercises)
+        exerciseDescriptionLabel.text = "\(exerciseDescription[exerciseNumberInList])"
         
         startStopButton.setTitleColor(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), for: .normal)
         startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
         resetButton.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
     }
     
-    func getDescriptions(taskList: TaskList) -> [String] {
-        var array: [String] = []
-        for taskNote in taskList.tasks {
-            array.append(taskNote.note)
-        }
-        return array
-    }
-    
-    func getExercises(taskList: TaskList) -> [String] {
-        var array: [String] = []
-        for task in taskList.tasks {
-            array.append(task.name)
-        }
-        return array
-    }
-    
-    func changeExerciseNext(taskList: TaskList) -> String {
-        if countExercise < (taskList.tasks.count - 1) {
-            countExercise += 1
-        } else {
-            countExercise = 0
-        }
-        exerciseDescriptionLabel.text = "\(descriptions[countExercise])"
-        return "\(names[countExercise])"
-    }
-    func changeExercisePrevious(taskList: TaskList) -> String {
-        if countExercise == 0 {
-            countExercise = (taskList.tasks.count - 1)
-        } else {
-            countExercise -= 1
-        }
-        exerciseDescriptionLabel.text = "\(descriptions[countExercise])"
-        return "\(names[countExercise])"
-    }
-    
     @IBAction func startStopTapped(_ sender: Any) {
         if timerCounting {
-            timerCounting = false
-            timerLabel.textColor = .red
-            timer.invalidate()
-            startStopButton.setTitle("START", for: .normal )
-            startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
-            startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+            stoppingTimer()
+            /*
+             timerCounting = false
+             timerLabel.textColor = .red
+             timer.invalidate()
+             startStopButton.setTitle("START", for: .normal )
+             startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
+             startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+             */
         } else {
             timerCounting = true
             startStopButton.setTitle("STOP", for: .normal)
@@ -113,8 +83,10 @@ class DetailTaskViewController: UIViewController {
     }
     
     @IBAction func nextExerciseButtonTapped(_ sender: Any) {
-        let next = changeExerciseNext(taskList: usersExercises)
-        exerciseDetailLabel.text = "\n\(next)"
+        calculatingRounds()
+        if roundComparison() {
+            changeExerciseNext(taskList: usersExercises)
+        }
     }
     
     @IBAction func previousExerciseButtonTapped(_ sender: Any) {
@@ -122,6 +94,7 @@ class DetailTaskViewController: UIViewController {
         exerciseDetailLabel.text = "\n\(previous)"
     }
     
+    // Mark: Timer Methods
     @objc func timerCounter() -> Void {
         count = count + 1
         let time = secondsToHoursMinutesSeconds(seconds: count)
@@ -129,11 +102,11 @@ class DetailTaskViewController: UIViewController {
         timerLabel.text = timeString
     }
     
-    func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
+    private func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
         return ((seconds / 3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
     }
     
-    func makeTimeString(hours: Int, minutes: Int, seconds: Int) -> String {
+    private func makeTimeString(hours: Int, minutes: Int, seconds: Int) -> String {
         var timeString = ""
         
         timeString += String(format: "%02d", hours)
@@ -142,6 +115,76 @@ class DetailTaskViewController: UIViewController {
         timeString += " : "
         timeString += String(format: "%02d", seconds)
         return timeString
+    }
+    
+    private func stoppingTimer() {
+        timerCounting = false
+        timerLabel.textColor = .red
+        timer.invalidate()
+        startStopButton.setTitle("START", for: .normal )
+        startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
+        startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+    }
+    
+    // Methods
+    private func getDescriptions(taskList: TaskList) -> [String] {
+        var allDescriptionOfNotes: [String] = []
+        
+        for taskNote in taskList.tasks {
+            allDescriptionOfNotes.append(taskNote.note)
+        }
+        return allDescriptionOfNotes
+    }
+    
+    private func getExercises(taskList: TaskList) -> [String] {
+        var array: [String] = []
+        for task in taskList.tasks {
+            array.append(task.name)
+        }
+        return array
+    }
+    
+    private func calculatingRounds() {
+        roundsCount = Int(String(roundsCountTF.text ?? "1")) ?? 1
+    }
+    
+    private func roundComparison() -> Bool {
+        finishedRounds < roundsCount
+    }
+    
+    private func calculatingResult() {
+        if finishedRounds < roundsCount {
+            changeExerciseNext(taskList: usersExercises)
+        } else {
+            stoppingTimer()
+        }
+    }
+    
+    
+    private func changeExerciseNext(taskList: TaskList) {
+        if exerciseNumberInList < (taskList.tasks.count - 1) {
+            exerciseNumberInList += 1
+        } else {
+            exerciseNumberInList = 0
+            finishedRounds += 1
+            testLabel.text = "Закончено раундов: \(String(finishedRounds))"
+            if roundComparison() == false {
+                stoppingTimer()
+            }
+        }
+        
+        exerciseDescriptionLabel.text = "\(exerciseDescription[exerciseNumberInList])"
+        exerciseDetailLabel.text = "\(exerciseNames[exerciseNumberInList])"
+    }
+    
+    private func changeExercisePrevious(taskList: TaskList) -> String {
+        if exerciseNumberInList == 0 {
+            exerciseNumberInList = (taskList.tasks.count - 1)
+        } else {
+            exerciseNumberInList -= 1
+        }
+        exerciseDescriptionLabel.text = "\(exerciseDescription[exerciseNumberInList])"
+        return "\(exerciseNames[exerciseNumberInList])"
     }
     
 }

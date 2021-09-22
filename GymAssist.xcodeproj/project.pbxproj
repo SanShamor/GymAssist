@@ -98,9 +98,9 @@
 			children = (
 				3639656326F1103300F6A86D /* TaskListViewController.swift */,
 				3639656126F10FD500F6A86D /* TasksViewController.swift */,
+				361967F226F7A17F000F90A2 /* DetailTaskViewController.swift */,
 				3639656826F113F300F6A86D /* AlertController.swift */,
 				3611079226F3D71600EC9E91 /* Extension + UITableViewCell.swift */,
-				361967F226F7A17F000F90A2 /* DetailTaskViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
