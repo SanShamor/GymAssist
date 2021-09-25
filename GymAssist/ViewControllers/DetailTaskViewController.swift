@@ -12,47 +12,56 @@ class DetailTaskViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
+    
     @IBOutlet weak var exerciseDetailLabel: UILabel!
     @IBOutlet weak var exerciseDescriptionLabel: UILabel!
-    @IBOutlet weak var roundsCountTF: UITextField!
-    @IBOutlet weak var testLabel: UILabel!
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var roundsCountLabel: UILabel!
+    @IBOutlet weak var addRoundButton: UIButton!
+    @IBOutlet weak var subRoundButton: UIButton!
+    @IBOutlet weak var nextExerciseButton: UIButton!
+    @IBOutlet weak var previousExerciseButton: UIButton!
     
     var usersExercises: TaskList!
     
     private var exerciseNames: [String] = []
     private var exerciseDescription: [String] = []
     private var exerciseNumberInList = 0
-    private var roundsCount: Int!
+    private var roundsCount = 1
     private var finishedRounds = 0
     
     private var timer: Timer = Timer()
-    private var count: Int = 0
-    private var timerCounting: Bool = false
+    private var count = 0
+    private var timerCounting = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         exerciseNames = getExercises(taskList: usersExercises)
-        exerciseDetailLabel.text = "\n\(exerciseNames[exerciseNumberInList])"
         exerciseDescription = getDescriptions(taskList: usersExercises)
-        exerciseDescriptionLabel.text = "\(exerciseDescription[exerciseNumberInList])"
+        startingValue()
         
         startStopButton.setTitleColor(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), for: .normal)
         startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
         resetButton.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
     }
+    // MARK: - IBActions
     
     @IBAction func startStopTapped(_ sender: Any) {
+        resetButton.isHidden = true
+        
         if timerCounting {
             stoppingTimer()
-            /*
-             timerCounting = false
-             timerLabel.textColor = .red
-             timer.invalidate()
-             startStopButton.setTitle("START", for: .normal )
-             startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
-             startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
-             */
+            resetButton.isHidden = false
         } else {
+            addRoundButton.isHidden = true
+            subRoundButton.isHidden = true
+            nextExerciseButton.isHidden = false
+            
+            if exerciseNumberInList != 0 {
+                previousExerciseButton.isHidden = false
+            }
+            
             timerCounting = true
             startStopButton.setTitle("STOP", for: .normal)
             timerLabel.textColor = .black
@@ -69,6 +78,9 @@ class DetailTaskViewController: UIViewController {
             self.count = 0
             self.timer.invalidate()
             self.timerLabel.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
+            
+            self.resetValues()
+            
             self.timerLabel.textColor = .black
             self.startStopButton.setTitle("START", for: .normal )
             self.startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
@@ -91,10 +103,21 @@ class DetailTaskViewController: UIViewController {
     
     @IBAction func previousExerciseButtonTapped(_ sender: Any) {
         let previous = changeExercisePrevious(taskList: usersExercises)
-        exerciseDetailLabel.text = "\n\(previous)"
+        exerciseDetailLabel.text = previous
     }
     
-    // Mark: Timer Methods
+    @IBAction func addRoundButtonTapped(_ sender: Any) {
+        roundsCount += 1
+        roundsCountLabel.text = String(roundsCount)
+    }
+    @IBAction func subRoundButtonTapped(_ sender: Any) {
+        if roundsCount > 1 {
+            roundsCount -= 1
+            roundsCountLabel.text = String(roundsCount)
+        }
+    }
+    
+    // MARK: - Timer Methods
     @objc func timerCounter() -> Void {
         count = count + 1
         let time = secondsToHoursMinutesSeconds(seconds: count)
@@ -121,12 +144,12 @@ class DetailTaskViewController: UIViewController {
         timerCounting = false
         timerLabel.textColor = .red
         timer.invalidate()
-        startStopButton.setTitle("START", for: .normal )
+        startStopButton.setTitle("Resume", for: .normal )
         startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
         startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
     }
     
-    // Methods
+    // MARK: - Methods
     private func getDescriptions(taskList: TaskList) -> [String] {
         var allDescriptionOfNotes: [String] = []
         
@@ -145,36 +168,39 @@ class DetailTaskViewController: UIViewController {
     }
     
     private func calculatingRounds() {
-        roundsCount = Int(String(roundsCountTF.text ?? "1")) ?? 1
+        roundsCount = Int(String(roundsCountLabel.text ?? "1")) ?? 1
     }
     
     private func roundComparison() -> Bool {
         finishedRounds < roundsCount
     }
     
-    private func calculatingResult() {
-        if finishedRounds < roundsCount {
-            changeExerciseNext(taskList: usersExercises)
-        } else {
-            stoppingTimer()
-        }
-    }
-    
-    
     private func changeExerciseNext(taskList: TaskList) {
+       
         if exerciseNumberInList < (taskList.tasks.count - 1) {
             exerciseNumberInList += 1
+            previousExerciseButton.isHidden = false
+
         } else {
             exerciseNumberInList = 0
+            previousExerciseButton.isHidden = true
             finishedRounds += 1
-            testLabel.text = "Закончено раундов: \(String(finishedRounds))"
+            scoreLabel.text = "Закончено раундов: \(String(finishedRounds))"
             if roundComparison() == false {
                 stoppingTimer()
+                
+                resetButton.isHidden = false
+                startStopButton.isHidden = true
+                addRoundButton.isHidden = true
+                subRoundButton.isHidden = true
+                nextExerciseButton.isHidden = true
+                previousExerciseButton.isHidden = true
+                roundsCountLabel.isHidden = true
             }
         }
         
-        exerciseDescriptionLabel.text = "\(exerciseDescription[exerciseNumberInList])"
-        exerciseDetailLabel.text = "\(exerciseNames[exerciseNumberInList])"
+        exerciseDescriptionLabel.text = (exerciseDescription[exerciseNumberInList])
+        exerciseDetailLabel.text = (exerciseNames[exerciseNumberInList])
     }
     
     private func changeExercisePrevious(taskList: TaskList) -> String {
@@ -183,8 +209,32 @@ class DetailTaskViewController: UIViewController {
         } else {
             exerciseNumberInList -= 1
         }
-        exerciseDescriptionLabel.text = "\(exerciseDescription[exerciseNumberInList])"
-        return "\(exerciseNames[exerciseNumberInList])"
+        exerciseDescriptionLabel.text = (exerciseDescription[exerciseNumberInList])
+        return exerciseNames[exerciseNumberInList]
     }
     
+    private func resetValues() {
+        self.finishedRounds = 0
+        self.scoreLabel.text = ""
+        
+        self.addRoundButton.isHidden = false
+        self.subRoundButton.isHidden = false
+        //self.scoreLabel.isHidden = false
+        self.startStopButton.isHidden = false
+        self.roundsCountLabel.isHidden = false
+        self.nextExerciseButton.isHidden = true
+        self.previousExerciseButton.isHidden = true
+        self.resetButton.isHidden = true
+        
+        self.startingValue()
+    }
+    
+    private func startingValue() {
+        exerciseNumberInList = 0
+        roundsCount = 1
+        
+        roundsCountLabel.text = String(roundsCount)
+        exerciseDetailLabel.text = (exerciseNames[exerciseNumberInList])
+        exerciseDescriptionLabel.text = (exerciseDescription[exerciseNumberInList])
+    }
 }
