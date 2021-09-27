@@ -24,7 +24,7 @@ class DetailTaskViewController: UIViewController {
     @IBOutlet weak var previousExerciseButton: UIButton!
     
     var usersExercises: TaskList!
-    
+    var timeResultsOfTaskList: [String] = []
     private var exerciseNames: [String] = []
     private var exerciseDescription: [String] = []
     private var exerciseNumberInList = 0
@@ -32,15 +32,18 @@ class DetailTaskViewController: UIViewController {
     private var finishedRounds = 0
     
     private var timer: Timer = Timer()
+    private var timerLap: Timer = Timer()
     private var count = 0
+    private var countLap = 0
     private var timerCounting = false
+    private var timerLapCounting = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         exerciseNames = getExercises(taskList: usersExercises)
         exerciseDescription = getDescriptions(taskList: usersExercises)
         startingValue()
-        
+                
         startStopButton.setTitleColor(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), for: .normal)
         startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
         resetButton.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
@@ -51,6 +54,7 @@ class DetailTaskViewController: UIViewController {
         resetButton.isHidden = true
         
         if timerCounting {
+            timerLapCounting = false
             stoppingTimer()
             resetButton.isHidden = false
         } else {
@@ -63,11 +67,13 @@ class DetailTaskViewController: UIViewController {
             }
             
             timerCounting = true
+            timerLapCounting = true
             startStopButton.setTitle("STOP", for: .normal)
             timerLabel.textColor = .black
             startStopButton.setTitleColor(UIColor.red, for: .normal)
             startStopButton.backgroundColor = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+            //timerLap = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerLapCounter), userInfo: nil, repeats: true)
         }
     }
     
@@ -120,11 +126,18 @@ class DetailTaskViewController: UIViewController {
     // MARK: - Timer Methods
     @objc func timerCounter() -> Void {
         count = count + 1
+        countLap = countLap + 1
         let time = secondsToHoursMinutesSeconds(seconds: count)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
         timerLabel.text = timeString
     }
-    
+    /*
+    @objc func timerLapCounter() -> Void {
+        countLap = countLap + 1
+        let time = secondsToHoursMinutesSeconds(seconds: countLap)
+        let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
+    }
+    */
     private func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
         return ((seconds / 3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
     }
@@ -147,6 +160,17 @@ class DetailTaskViewController: UIViewController {
         startStopButton.setTitle("Resume", for: .normal )
         startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
         startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+        
+        resetButton.isHidden = false
+        addRoundButton.isHidden = true
+        subRoundButton.isHidden = true
+        nextExerciseButton.isHidden = true
+        previousExerciseButton.isHidden = true
+        roundsCountLabel.isHidden = true
+    }
+    
+    private func lapTimer() {
+        timerLap.invalidate()
     }
     
     // MARK: - Methods
@@ -180,27 +204,27 @@ class DetailTaskViewController: UIViewController {
         if exerciseNumberInList < (taskList.tasks.count - 1) {
             exerciseNumberInList += 1
             previousExerciseButton.isHidden = false
-
+            exerciseDescriptionLabel.text = (exerciseDescription[exerciseNumberInList])
+            exerciseDetailLabel.text = (exerciseNames[exerciseNumberInList])
         } else {
             exerciseNumberInList = 0
             previousExerciseButton.isHidden = true
             finishedRounds += 1
-            scoreLabel.text = "Закончено раундов: \(String(finishedRounds))"
+            scoreLabel.text = "Закончено раундов: \(String(finishedRounds))/\(roundsCount)"
+            exerciseDescriptionLabel.text = (exerciseDescription[exerciseNumberInList])
+            exerciseDetailLabel.text = (exerciseNames[exerciseNumberInList])
+            
+            finishTheTaskList()
+            
             if roundComparison() == false {
+                let result = getTimerResultValue()
+                let lapsResult = showResult()
+                exerciseDescriptionLabel.text = "Потрачено \n\(result) \(lapsResult)"
                 stoppingTimer()
-                
-                resetButton.isHidden = false
                 startStopButton.isHidden = true
-                addRoundButton.isHidden = true
-                subRoundButton.isHidden = true
-                nextExerciseButton.isHidden = true
-                previousExerciseButton.isHidden = true
-                roundsCountLabel.isHidden = true
             }
         }
         
-        exerciseDescriptionLabel.text = (exerciseDescription[exerciseNumberInList])
-        exerciseDetailLabel.text = (exerciseNames[exerciseNumberInList])
     }
     
     private func changeExercisePrevious(taskList: TaskList) -> String {
@@ -219,7 +243,6 @@ class DetailTaskViewController: UIViewController {
         
         self.addRoundButton.isHidden = false
         self.subRoundButton.isHidden = false
-        //self.scoreLabel.isHidden = false
         self.startStopButton.isHidden = false
         self.roundsCountLabel.isHidden = false
         self.nextExerciseButton.isHidden = true
@@ -237,4 +260,31 @@ class DetailTaskViewController: UIViewController {
         exerciseDetailLabel.text = (exerciseNames[exerciseNumberInList])
         exerciseDescriptionLabel.text = (exerciseDescription[exerciseNumberInList])
     }
+    
+    private func finishTheTaskList() {
+        let time = secondsToHoursMinutesSeconds(seconds: countLap)
+        let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
+        let roundResult = "\(finishedRounds)) \(timeString)"
+        timeResultsOfTaskList.append(roundResult)
+        countLap = 0
+    }
+    
+    private func getTimerResultValue() -> String {
+        let time = secondsToHoursMinutesSeconds(seconds: count)
+        let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
+        return timeString
+    }
+    
+    private func showResult() -> String {
+        var lapsInfo = ""
+        for lap in timeResultsOfTaskList {
+            lapsInfo += "\n\(lap)"
+        }
+        return lapsInfo
+    }
+    
+    private func saveResult() {
+        
+    }
+    
 }
