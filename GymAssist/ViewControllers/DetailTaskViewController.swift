@@ -45,8 +45,8 @@ class DetailTaskViewController: UIViewController {
         startingValue()
                 
         startStopButton.setTitleColor(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), for: .normal)
-        startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
-        resetButton.backgroundColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        startStopButton.backgroundColor = #colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1)
+        resetButton.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
     }
     // MARK: - IBActions
     
@@ -69,9 +69,9 @@ class DetailTaskViewController: UIViewController {
             timerCounting = true
             timerLapCounting = true
             startStopButton.setTitle("STOP", for: .normal)
-            timerLabel.textColor = .black
-            startStopButton.setTitleColor(UIColor.red, for: .normal)
-            startStopButton.backgroundColor = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
+            timerLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            startStopButton.setTitleColor(#colorLiteral(red: 0.3180879951, green: 0.07594271749, blue: 0.02917674743, alpha: 1), for: .normal)
+            startStopButton.backgroundColor = #colorLiteral(red: 1, green: 0.1745384336, blue: 0.1752099395, alpha: 1)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
             //timerLap = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerLapCounter), userInfo: nil, repeats: true)
         }
@@ -87,10 +87,10 @@ class DetailTaskViewController: UIViewController {
             
             self.resetValues()
             
-            self.timerLabel.textColor = .black
+            self.timerLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             self.startStopButton.setTitle("START", for: .normal )
             self.startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
-            self.startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+            self.startStopButton.backgroundColor = #colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1)
         }))
         
         alert.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: { (_) in
@@ -131,13 +131,7 @@ class DetailTaskViewController: UIViewController {
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
         timerLabel.text = timeString
     }
-    /*
-    @objc func timerLapCounter() -> Void {
-        countLap = countLap + 1
-        let time = secondsToHoursMinutesSeconds(seconds: countLap)
-        let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
-    }
-    */
+    
     private func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
         return ((seconds / 3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
     }
@@ -159,7 +153,7 @@ class DetailTaskViewController: UIViewController {
         timer.invalidate()
         startStopButton.setTitle("Resume", for: .normal )
         startStopButton.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
-        startStopButton.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+        startStopButton.backgroundColor = #colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1)
         
         resetButton.isHidden = false
         addRoundButton.isHidden = true
@@ -219,7 +213,9 @@ class DetailTaskViewController: UIViewController {
             if roundComparison() == false {
                 let result = getTimerResultValue()
                 let lapsResult = showResult()
-                exerciseDescriptionLabel.text = "Потрачено \n\(result) \(lapsResult)"
+                scoreLabel.isHidden = true
+                exerciseDetailLabel.text = "Времени потрачено:\n\(result)"
+                exerciseDescriptionLabel.text = "\(lapsResult)"
                 stoppingTimer()
                 startStopButton.isHidden = true
             }

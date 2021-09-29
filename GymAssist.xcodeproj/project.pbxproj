@@ -21,6 +21,7 @@
 		36850F7926F9B17C00A8E692 /* iconLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 36850F7826F9B17C00A8E692 /* iconLogo.png */; };
 		369085DA26F1366800ED877E /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085D926F1366800ED877E /* TaskList.swift */; };
 		369085DC26F1397000ED877E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085DB26F1397000ED877E /* StorageManager.swift */; };
+		36D979E22703A7970040774E /* BodyMassIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D979E12703A7970040774E /* BodyMassIndexViewController.swift */; };
 		6F9C5340A586459A4E41C2BC /* Pods_GymAssist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7AB73D71C644BC84D891DB /* Pods_GymAssist.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		36850F7826F9B17C00A8E692 /* iconLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconLogo.png; path = ../../../iconLogo.png; sourceTree = "<group>"; };
 		369085D926F1366800ED877E /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		369085DB26F1397000ED877E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		36D979E12703A7970040774E /* BodyMassIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMassIndexViewController.swift; sourceTree = "<group>"; };
 		71EA0E392B812A31DDB6AFD1 /* Pods-GymAssist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymAssist.debug.xcconfig"; path = "Target Support Files/Pods-GymAssist/Pods-GymAssist.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7AB73D71C644BC84D891DB /* Pods_GymAssist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GymAssist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,6 +103,7 @@
 				361967F226F7A17F000F90A2 /* DetailTaskViewController.swift */,
 				3639656826F113F300F6A86D /* AlertController.swift */,
 				3611079226F3D71600EC9E91 /* Extension + UITableViewCell.swift */,
+				36D979E12703A7970040774E /* BodyMassIndexViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				3639656926F113F300F6A86D /* AlertController.swift in Sources */,
 				361967F326F7A17F000F90A2 /* DetailTaskViewController.swift in Sources */,
 				369085DC26F1397000ED877E /* StorageManager.swift in Sources */,
+				36D979E22703A7970040774E /* BodyMassIndexViewController.swift in Sources */,
 				3639656426F1103300F6A86D /* TaskListViewController.swift in Sources */,
 				3611079326F3D71600EC9E91 /* Extension + UITableViewCell.swift in Sources */,
 				3639655026F10D2900F6A86D /* SceneDelegate.swift in Sources */,
@@ -413,6 +417,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GymAssist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,6 +437,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GymAssist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
