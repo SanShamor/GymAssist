@@ -7,11 +7,12 @@
 
 import RealmSwift
 
-class DetailTaskViewController: UIViewController {
+class DetailTaskVC: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var saveResultButton: UIButton!
     
     @IBOutlet weak var exerciseDetailLabel: UILabel!
     @IBOutlet weak var exerciseDescriptionLabel: UILabel!
@@ -33,8 +34,8 @@ class DetailTaskViewController: UIViewController {
     
     private var timer: Timer = Timer()
     private var timerLap: Timer = Timer()
-    private var count = 0
-    private var countLap = 0
+    private var countTimerValue = 0
+    private var countTimerForLap = 0
     private var timerCounting = false
     private var timerLapCounting = false
     
@@ -46,7 +47,7 @@ class DetailTaskViewController: UIViewController {
                 
         startStopButton.setTitleColor(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), for: .normal)
         startStopButton.backgroundColor = #colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1)
-        resetButton.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        resetButton.backgroundColor = #colorLiteral(red: 0.9988579154, green: 0.1766675115, blue: 0.1742589176, alpha: 1)
     }
     // MARK: - IBActions
     
@@ -81,7 +82,7 @@ class DetailTaskViewController: UIViewController {
         let alert = UIAlertController(title: "Reset timer?", message: "Are you sure?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (_) in
-            self.count = 0
+            self.countTimerValue = 0
             self.timer.invalidate()
             self.timerLabel.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
             
@@ -116,6 +117,7 @@ class DetailTaskViewController: UIViewController {
         roundsCount += 1
         roundsCountLabel.text = String(roundsCount)
     }
+    
     @IBAction func subRoundButtonTapped(_ sender: Any) {
         if roundsCount > 1 {
             roundsCount -= 1
@@ -123,11 +125,17 @@ class DetailTaskViewController: UIViewController {
         }
     }
     
+    @IBAction func saveHighscoreButtonPressed(_ sender: Any) {
+        let time = getTimerResultValue()
+        saveHighscore(withTime: time)
+        saveResultButton.isHidden = true
+    }
+    
     // MARK: - Timer Methods
     @objc func timerCounter() -> Void {
-        count = count + 1
-        countLap = countLap + 1
-        let time = secondsToHoursMinutesSeconds(seconds: count)
+        countTimerValue = countTimerValue + 1
+        countTimerForLap = countTimerForLap + 1
+        let time = secondsToHoursMinutesSeconds(seconds: countTimerValue)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
         timerLabel.text = timeString
     }
@@ -218,6 +226,7 @@ class DetailTaskViewController: UIViewController {
                 exerciseDescriptionLabel.text = "\(lapsResult)"
                 stoppingTimer()
                 startStopButton.isHidden = true
+                saveResultButton.isHidden = false
             }
         }
         
@@ -258,15 +267,15 @@ class DetailTaskViewController: UIViewController {
     }
     
     private func finishTheTaskList() {
-        let time = secondsToHoursMinutesSeconds(seconds: countLap)
+        let time = secondsToHoursMinutesSeconds(seconds: countTimerForLap)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
         let roundResult = "\(finishedRounds)) \(timeString)"
         timeResultsOfTaskList.append(roundResult)
-        countLap = 0
+        countTimerForLap = 0
     }
     
     private func getTimerResultValue() -> String {
-        let time = secondsToHoursMinutesSeconds(seconds: count)
+        let time = secondsToHoursMinutesSeconds(seconds: countTimerValue)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
         return timeString
     }
@@ -283,4 +292,12 @@ class DetailTaskViewController: UIViewController {
         
     }
     
+}
+
+extension DetailTaskVC {
+    private func saveHighscore(withTime timeResult: String) {
+        let result = Highscore()
+        result.totalTime = timeResult
+        StorageManager.shared.save(highscore: result, in: usersExercises)
+    }
 }

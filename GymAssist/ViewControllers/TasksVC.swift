@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class TasksViewController: UITableViewController {
+class TasksVC: UITableViewController {
     
     var taskList: TaskList!
     
@@ -91,7 +91,7 @@ class TasksViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailTaskVC = segue.destination as! DetailTaskViewController
+        let detailTaskVC = segue.destination as! DetailTaskVC
         detailTaskVC.usersExercises = taskList
         
     }
@@ -102,7 +102,7 @@ class TasksViewController: UITableViewController {
 
 }
 
-extension TasksViewController {
+extension TasksVC {
     
     private func showAlert(with task: Task? = nil, completion: (() -> Void)? = nil) {
         let title = task != nil ? "Изменение задачи" : "Новое упражнение"

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BodyMassIndexViewController: UIViewController {
+class BodyMassIndexVC: UIViewController {
     
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
@@ -50,7 +50,6 @@ class BodyMassIndexViewController: UIViewController {
         bmiDiscriptionLabel.text =
         """
         Индекс массы тела (BMI) — величина, позволяющая оценить степень соответствия массы человека и его роста и тем самым косвенно судить о том, является ли масса недостаточной, нормальной или избыточной.
-        
         ИМТ важен при определении показаний для лечения.
         """
         bmiCategoriesLabel.text =
@@ -75,7 +74,7 @@ class BodyMassIndexViewController: UIViewController {
     }
     
 }
-extension BodyMassIndexViewController: UITextFieldDelegate {
+extension BodyMassIndexVC: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

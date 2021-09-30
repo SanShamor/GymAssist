@@ -79,5 +79,18 @@ class StorageManager {
             print(error)
         }
     }
+    // MARK: - Work with Highscores
+    func save(highscore: Highscore, in taskList: TaskList) {
+        write {
+            taskList.userHighscores.append(highscore)
+        }
+    }
+    
+    func edit(highscore: Highscore){
+        write {
+            realm.delete(highscore)
+        }
+    }
+    
 }
 

@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class TaskListViewController: UITableViewController {
+class TaskListTVC: UITableViewController {
 
     private var taskLists: Results<TaskList>!
 
@@ -65,7 +65,7 @@ class TaskListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        guard let tasksVC = segue.destination as? TasksViewController else { return }
+        guard let tasksVC = segue.destination as? TasksVC else { return }
         let taskList = taskLists[indexPath.row]
         tasksVC.taskList = taskList
     }
@@ -90,7 +90,7 @@ class TaskListViewController: UITableViewController {
     
 }
 
-extension TaskListViewController {
+extension TaskListTVC {
     
     private func showAlert(with taskList: TaskList? = nil, completion: (() -> Void)? = nil) {
         let title = taskList != nil ? "Изменить программу" : "Новая программа"
