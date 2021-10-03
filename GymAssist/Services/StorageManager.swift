@@ -86,7 +86,7 @@ class StorageManager {
         }
     }
     
-    func edit(highscore: Highscore){
+    func delete(highscore: Highscore){
         write {
             realm.delete(highscore)
         }

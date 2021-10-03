@@ -65,7 +65,7 @@ class TaskListTVC: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        guard let tasksVC = segue.destination as? TasksVC else { return }
+        guard let tasksVC = segue.destination as? TasksTVC else { return }
         let taskList = taskLists[indexPath.row]
         tasksVC.taskList = taskList
     }

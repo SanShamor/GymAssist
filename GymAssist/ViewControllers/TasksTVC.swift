@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class TasksVC: UITableViewController {
+class TasksTVC: UITableViewController {
     
     var taskList: TaskList!
     
@@ -102,7 +102,7 @@ class TasksVC: UITableViewController {
 
 }
 
-extension TasksVC {
+extension TasksTVC {
     
     private func showAlert(with task: Task? = nil, completion: (() -> Void)? = nil) {
         let title = task != nil ? "Изменение задачи" : "Новое упражнение"

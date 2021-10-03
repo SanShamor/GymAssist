@@ -14,11 +14,17 @@ class HighscoresTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        taskLists = StorageManager.shared.realm.objects(TaskList.self)
         title = "Мои результаты"
+        taskLists = StorageManager.shared.realm.objects(TaskList.self)
+        navigationItem.rightBarButtonItems = [editButtonItem]
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = .white
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         taskLists.count
@@ -47,6 +53,18 @@ class HighscoresTVC: UITableViewController {
         content.secondaryText = String(dateTimeString)
         cell.contentConfiguration = content
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let highscore = taskLists[indexPath.section].userHighscores[indexPath.row]
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+            StorageManager.shared.delete(highscore: highscore)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+                
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
 }
