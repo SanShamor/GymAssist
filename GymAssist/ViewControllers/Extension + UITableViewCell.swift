@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITableViewCell {
-    func configure(with taskList: TaskList) {
+    func config≠ure(with taskList: TaskList) {
         let currentTasks = taskList.tasks.filter("isComplete = false")
         let completeTasks = taskList.tasks.filter("isComplete = true")
         var content = defaultContentConfiguration()

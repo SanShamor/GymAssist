@@ -74,7 +74,6 @@ class DetailTaskVC: UIViewController {
             startStopButton.setTitleColor(#colorLiteral(red: 0.3180879951, green: 0.07594271749, blue: 0.02917674743, alpha: 1), for: .normal)
             startStopButton.backgroundColor = #colorLiteral(red: 1, green: 0.1745384336, blue: 0.1752099395, alpha: 1)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
-            //timerLap = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerLapCounter), userInfo: nil, repeats: true)
         }
     }
     
@@ -109,8 +108,7 @@ class DetailTaskVC: UIViewController {
     }
     
     @IBAction func previousExerciseButtonTapped(_ sender: Any) {
-        let previous = changeExercisePrevious(taskList: usersExercises)
-        exerciseDetailLabel.text = previous
+        changeExercisePrevious(taskList: usersExercises)
     }
     
     @IBAction func addRoundButtonTapped(_ sender: Any) {
@@ -232,20 +230,20 @@ class DetailTaskVC: UIViewController {
         
     }
     
-    private func changeExercisePrevious(taskList: TaskList) -> String {
+    private func changeExercisePrevious(taskList: TaskList) {
+        exerciseNumberInList -= 1
         if exerciseNumberInList == 0 {
-            exerciseNumberInList = (taskList.tasks.count - 1)
-        } else {
-            exerciseNumberInList -= 1
+            previousExerciseButton.isHidden = true
         }
         exerciseDescriptionLabel.text = (exerciseDescription[exerciseNumberInList])
-        return exerciseNames[exerciseNumberInList]
+        exerciseDetailLabel.text = (exerciseNames[exerciseNumberInList])
     }
     
     private func resetValues() {
         self.finishedRounds = 0
         self.scoreLabel.text = ""
         
+        self.saveResultButton.isHidden = true
         self.addRoundButton.isHidden = false
         self.subRoundButton.isHidden = false
         self.startStopButton.isHidden = false
@@ -286,10 +284,6 @@ class DetailTaskVC: UIViewController {
             lapsInfo += "\n\(lap)"
         }
         return lapsInfo
-    }
-    
-    private func saveResult() {
-        
     }
     
 }
