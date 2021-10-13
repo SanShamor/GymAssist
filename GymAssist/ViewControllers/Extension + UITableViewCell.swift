@@ -9,18 +9,14 @@ import UIKit
 
 extension UITableViewCell {
     func configure(with taskList: TaskList) {
-        let currentTasks = taskList.tasks.filter("isComplete = false")
-        let completeTasks = taskList.tasks.filter("isComplete = true")
+        let userTasks = taskList.tasks
         var content = defaultContentConfiguration()
         
         content.text = taskList.name
         
-        if !currentTasks.isEmpty {
-            content.secondaryText = "\(currentTasks.count)"
+        if !userTasks.isEmpty {
+            content.secondaryText = "\(userTasks.count)"
             accessoryType = .none
-        } else if !completeTasks.isEmpty {
-            content.secondaryText = nil
-            accessoryType = .checkmark
         } else {
             accessoryType = .none
             content.secondaryText = "0"

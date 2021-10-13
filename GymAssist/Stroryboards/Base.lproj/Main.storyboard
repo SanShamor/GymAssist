@@ -103,7 +103,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="Title">
                                                     <attributes>
-                                                        <color key="NSColor" red="0.97402597402597402" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <font key="NSFont" metaFont="system" size="15"/>
                                                     </attributes>
                                                 </fragment>
@@ -114,7 +114,7 @@
                                             <rect key="frame" x="19.999999999999996" y="27.999999999999996" width="40.666666666666664" height="13.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.54501450060000001" green="0.55306369070000005" blue="0.55295020340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -321,9 +321,9 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="is8-Mr-zsr">
-                                <rect key="frame" x="110" y="187" width="208" height="33"/>
+                                <rect key="frame" x="105" y="187" width="218" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="Sff-Fa-cRw"/>
+                                    <constraint firstAttribute="height" constant="35" id="Sff-Fa-cRw"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -350,7 +350,7 @@
                             <constraint firstItem="yeB-eL-ZnE" firstAttribute="top" secondItem="1eC-Wo-bno" secondAttribute="bottom" constant="85" id="12o-Op-Yxf"/>
                             <constraint firstItem="BIU-Lp-EY9" firstAttribute="width" secondItem="hhH-uW-LYe" secondAttribute="height" multiplier="70:463" id="2qL-HT-jfP"/>
                             <constraint firstItem="vo8-J6-wKu" firstAttribute="bottom" secondItem="yeB-eL-ZnE" secondAttribute="bottom" constant="90" id="3L9-bW-eZa"/>
-                            <constraint firstItem="is8-Mr-zsr" firstAttribute="leading" secondItem="vo8-J6-wKu" secondAttribute="leading" constant="110" id="4lc-Gh-z9l"/>
+                            <constraint firstItem="is8-Mr-zsr" firstAttribute="leading" secondItem="vo8-J6-wKu" secondAttribute="leading" constant="105" id="4lc-Gh-z9l"/>
                             <constraint firstItem="Y2c-mw-dj7" firstAttribute="leading" relation="lessThanOrEqual" secondItem="aLF-fd-eBt" secondAttribute="trailing" constant="88" id="817-fO-1aF"/>
                             <constraint firstItem="is8-Mr-zsr" firstAttribute="top" secondItem="oZV-a8-WaU" secondAttribute="bottom" constant="25" id="9sE-qT-lt8"/>
                             <constraint firstItem="ClK-Ys-4ZY" firstAttribute="centerX" secondItem="hhH-uW-LYe" secondAttribute="centerX" id="EyO-rE-Dro"/>
@@ -370,7 +370,7 @@
                             <constraint firstItem="aLF-fd-eBt" firstAttribute="leading" secondItem="vo8-J6-wKu" secondAttribute="leading" constant="125" id="q9d-hx-Rf0"/>
                             <constraint firstItem="OlY-sb-115" firstAttribute="leading" secondItem="vo8-J6-wKu" secondAttribute="leading" constant="15" id="qLx-nP-5pN"/>
                             <constraint firstItem="yeB-eL-ZnE" firstAttribute="leading" secondItem="vo8-J6-wKu" secondAttribute="leading" constant="15" id="rgH-5L-9OS"/>
-                            <constraint firstItem="vo8-J6-wKu" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="is8-Mr-zsr" secondAttribute="trailing" constant="110" id="sgs-Ez-3Mf"/>
+                            <constraint firstItem="vo8-J6-wKu" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="is8-Mr-zsr" secondAttribute="trailing" constant="105" id="sgs-Ez-3Mf"/>
                             <constraint firstItem="vo8-J6-wKu" firstAttribute="trailing" secondItem="yeB-eL-ZnE" secondAttribute="trailing" constant="15" id="tFc-em-dKl"/>
                             <constraint firstItem="vo8-J6-wKu" firstAttribute="trailing" secondItem="1eC-Wo-bno" secondAttribute="trailing" constant="100" id="tUh-HH-YgU"/>
                             <constraint firstAttribute="trailing" secondItem="bAY-zC-LV0" secondAttribute="trailing" constant="15" id="tZO-pa-hs7"/>
@@ -507,46 +507,47 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYv-DJ-taz">
-                                <rect key="frame" x="20" y="343" width="388" height="384"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWb-zb-Zcg">
-                                <rect key="frame" x="30" y="742" width="383" height="36"/>
+                                <rect key="frame" x="30" y="750" width="383" height="28"/>
                                 <attributedString key="attributedText">
                                     <fragment content="UserValue">
                                         <attributes>
                                             <color key="NSColor" red="0.1685919464" green="0.1726061106" blue="0.1725620329" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="30"/>
+                                            <font key="NSFont" metaFont="system" size="25"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iF-iv-Z0p">
+                                <rect key="frame" x="15" y="338" width="398" height="402"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.62417994379999997" green="0.64948453610000001" blue="0.64948453610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="74y-tw-yu5"/>
                         <color key="backgroundColor" red="0.1686576903" green="0.17254441979999999" blue="0.17254927749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="aWb-zb-Zcg" firstAttribute="top" secondItem="hYv-DJ-taz" secondAttribute="bottom" constant="15" id="4oU-9f-Dts"/>
                             <constraint firstItem="UfY-hQ-kiF" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="50" id="4vU-Hp-77E"/>
                             <constraint firstItem="48S-vF-8Qq" firstAttribute="top" secondItem="74y-tw-yu5" secondAttribute="top" constant="35" id="82O-zz-bjL"/>
-                            <constraint firstItem="74y-tw-yu5" firstAttribute="trailing" secondItem="hYv-DJ-taz" secondAttribute="trailing" constant="20" id="8iR-Rp-7NI"/>
+                            <constraint firstItem="3iF-iv-Z0p" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="15" id="8xH-ry-r7I"/>
                             <constraint firstItem="74y-tw-yu5" firstAttribute="bottom" secondItem="iQS-fN-Jhj" secondAttribute="bottom" constant="25" id="DB6-dd-iga"/>
                             <constraint firstItem="74y-tw-yu5" firstAttribute="trailing" secondItem="48S-vF-8Qq" secondAttribute="trailing" constant="15" id="E97-kf-dfM"/>
                             <constraint firstItem="48S-vF-8Qq" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="15" id="GJS-r1-6n8"/>
                             <constraint firstItem="74y-tw-yu5" firstAttribute="trailing" secondItem="iQS-fN-Jhj" secondAttribute="trailing" constant="15" id="JOJ-Ld-EgE"/>
                             <constraint firstItem="UfY-hQ-kiF" firstAttribute="top" secondItem="wvn-jE-ybe" secondAttribute="bottom" constant="2" id="KRT-Sz-a7K"/>
                             <constraint firstItem="wvn-jE-ybe" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="20" id="MBx-Mh-iGg"/>
+                            <constraint firstItem="3iF-iv-Z0p" firstAttribute="top" secondItem="UfY-hQ-kiF" secondAttribute="bottom" constant="15" id="WWH-gp-K89"/>
                             <constraint firstItem="aWb-zb-Zcg" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="30" id="YVl-nT-mNy"/>
                             <constraint firstItem="wvn-jE-ybe" firstAttribute="top" secondItem="48S-vF-8Qq" secondAttribute="bottom" constant="25" id="bZG-mv-mmD"/>
-                            <constraint firstItem="hYv-DJ-taz" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="20" id="c3Q-Mn-Iri"/>
+                            <constraint firstItem="aWb-zb-Zcg" firstAttribute="top" secondItem="3iF-iv-Z0p" secondAttribute="bottom" constant="10" id="etO-9b-zF2"/>
                             <constraint firstItem="74y-tw-yu5" firstAttribute="trailing" secondItem="wvn-jE-ybe" secondAttribute="trailing" constant="20" id="fuc-l8-OFu"/>
-                            <constraint firstItem="hYv-DJ-taz" firstAttribute="top" secondItem="UfY-hQ-kiF" secondAttribute="bottom" constant="20" id="g25-zm-1wS"/>
                             <constraint firstItem="74y-tw-yu5" firstAttribute="trailing" secondItem="aWb-zb-Zcg" secondAttribute="trailing" constant="15" id="pS3-XG-jkF"/>
                             <constraint firstItem="iQS-fN-Jhj" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="55" id="pkf-5p-uDQ"/>
+                            <constraint firstItem="74y-tw-yu5" firstAttribute="trailing" secondItem="3iF-iv-Z0p" secondAttribute="trailing" constant="15" id="uig-VP-2UD"/>
                             <constraint firstItem="iQS-fN-Jhj" firstAttribute="top" secondItem="aWb-zb-Zcg" secondAttribute="bottom" constant="15" id="ydm-5p-Tdm"/>
                             <constraint firstItem="74y-tw-yu5" firstAttribute="trailing" secondItem="UfY-hQ-kiF" secondAttribute="trailing" constant="50" id="ysO-IK-lN0"/>
                         </constraints>
@@ -554,7 +555,7 @@
                     <tabBarItem key="tabBarItem" title="BMI" image="person.fill.viewfinder" catalog="system" id="avf-BJ-8Eu"/>
                     <connections>
                         <outlet property="bmiCategoriesLabel" destination="iQS-fN-Jhj" id="irQ-jk-Tvw"/>
-                        <outlet property="bmiDiscriptionLabel" destination="hYv-DJ-taz" id="oBj-2L-GLd"/>
+                        <outlet property="bmiInfoTextView" destination="3iF-iv-Z0p" id="J4Q-7b-AZS"/>
                         <outlet property="heightTextField" destination="8dn-XT-liZ" id="SK9-S4-M9Z"/>
                         <outlet property="resultValueLabel" destination="aWb-zb-Zcg" id="q95-lG-D8E"/>
                         <outlet property="weightTextField" destination="Vcv-7V-vEb" id="iux-g6-3LC"/>

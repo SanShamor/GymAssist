@@ -11,16 +11,16 @@ class BodyMassIndexVC: UIViewController {
     
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
-    @IBOutlet weak var bmiDiscriptionLabel: UILabel!
     @IBOutlet weak var bmiCategoriesLabel: UILabel!
     @IBOutlet weak var resultValueLabel: UILabel!
+    @IBOutlet weak var bmiInfoTextView: UITextView!
     
     private var weightValue: Double = 1.0
     private var heightValue: Double = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabelText()
+        setBMIhelpInfo()
     }
     
     @IBAction func calculateButtonTapped(_ sender: Any) {
@@ -46,8 +46,8 @@ class BodyMassIndexVC: UIViewController {
         return result
     }
     
-    private func setLabelText() {
-        bmiDiscriptionLabel.text =
+    private func setBMIhelpInfo() {
+        bmiInfoTextView.text =
         """
         Индекс массы тела (BMI) — величина, позволяющая оценить степень соответствия массы человека и его роста и тем самым косвенно судить о том, является ли масса недостаточной, нормальной или избыточной.
         ИМТ важен при определении показаний для лечения.

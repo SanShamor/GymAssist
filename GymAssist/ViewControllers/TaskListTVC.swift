@@ -31,6 +31,7 @@ class TaskListTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
         let taskList = taskLists[indexPath.row]
         cell.configure(with: taskList)
+        //content.text = taskList.name
         return cell
     }
     
@@ -51,16 +52,10 @@ class TaskListTVC: UITableViewController {
             isDone(true)
         }
         
-        let doneAction = UIContextualAction(style: .normal, title: "Done") { _, _, isDone in
-            StorageManager.shared.done(taskList: taskList)
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            isDone(true)
-        }
         
         editAction.backgroundColor = .orange
-        doneAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         
-        return UISwipeActionsConfiguration(actions: [doneAction, editAction, deleteAction])
+        return UISwipeActionsConfiguration(actions: [editAction, deleteAction])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
