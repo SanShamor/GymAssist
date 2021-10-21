@@ -46,7 +46,7 @@ class StorageManager {
         }
     }
     
-    // MARK: - Work with tasks
+    // MARK: - Work with Tasks
     func save(task: Task, in taskList: TaskList) {
         write {
             taskList.tasks.append(task)

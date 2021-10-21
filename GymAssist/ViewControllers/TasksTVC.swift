@@ -11,9 +11,6 @@ class TasksTVC: UITableViewController {
     
     var taskList: TaskList!
     
-    private var currentTasks: Results<Task>!
-    private var completedTasks: Results<Task>!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = taskList.name
@@ -31,6 +28,18 @@ class TasksTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         taskList.tasks.count
     }
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .none
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        false
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+       // let currentTrack = trackList.remove(at: sourceIndexPath.row)
+       // trackList.insert(currentTrack, at: destinationIndexPath.row)
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TasksCell", for: indexPath)
@@ -40,6 +49,7 @@ class TasksTVC: UITableViewController {
         content.text = task.name
         content.secondaryText = task.note
         cell.contentConfiguration = content
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -99,7 +109,7 @@ extension TasksTVC {
     private func saveTask(withName name: String, andNote note: String) {
         let task = Task(value: [name, note])
         StorageManager.shared.save(task: task, in: taskList)
-        let rowIndex = IndexPath(row: currentTasks.count - 1, section: 0)
+        let rowIndex = IndexPath(row: taskList.tasks.count - 1 , section: 0)
         tableView.insertRows(at: [rowIndex], with: .automatic)
     }
 }

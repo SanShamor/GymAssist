@@ -23,14 +23,14 @@ class HighscoresTVC: UITableViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = .white
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         taskLists.count
     }
@@ -68,7 +68,7 @@ class HighscoresTVC: UITableViewController {
             StorageManager.shared.delete(highscore: highscore)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-                
+        
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     

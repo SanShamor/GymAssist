@@ -8,15 +8,15 @@
 import RealmSwift
 
 class TaskListTVC: UITableViewController {
-
+    
     private var taskLists: Results<TaskList>!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createTestData()
         taskLists = StorageManager.shared.realm.objects(TaskList.self)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -26,12 +26,12 @@ class TaskListTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         taskLists.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
         let taskList = taskLists[indexPath.row]
         cell.configure(with: taskList)
-        //content.text = taskList.name
+        
         return cell
     }
     
@@ -52,7 +52,6 @@ class TaskListTVC: UITableViewController {
             isDone(true)
         }
         
-        
         editAction.backgroundColor = .orange
         
         return UISwipeActionsConfiguration(actions: [editAction, deleteAction])
@@ -65,15 +64,14 @@ class TaskListTVC: UITableViewController {
         tasksVC.taskList = taskList
     }
     
-
     @IBAction func addButtonPressed(_ sender: Any) {
         showAlert()
     }
     
     @IBAction func sortingList(_ sender: UISegmentedControl) {
         taskLists = sender.selectedSegmentIndex == 0
-            ? taskLists.sorted(byKeyPath: "name")
-            : taskLists.sorted(byKeyPath: "date")
+        ? taskLists.sorted(byKeyPath: "name")
+        : taskLists.sorted(byKeyPath: "date")
         tableView.reloadData()
     }
     

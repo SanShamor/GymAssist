@@ -18,7 +18,6 @@
 		3639656226F10FD500F6A86D /* TasksTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656126F10FD500F6A86D /* TasksTVC.swift */; };
 		3639656426F1103300F6A86D /* TaskListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656326F1103300F6A86D /* TaskListTVC.swift */; };
 		3639656926F113F300F6A86D /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656826F113F300F6A86D /* AlertController.swift */; };
-		36850F7926F9B17C00A8E692 /* iconLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 36850F7826F9B17C00A8E692 /* iconLogo.png */; };
 		369085DA26F1366800ED877E /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085D926F1366800ED877E /* TaskList.swift */; };
 		369085DC26F1397000ED877E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085DB26F1397000ED877E /* StorageManager.swift */; };
 		3697932C27062DB200831816 /* HighscoresTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3697932B27062DB200831816 /* HighscoresTVC.swift */; };
@@ -42,7 +41,6 @@
 		3639656326F1103300F6A86D /* TaskListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTVC.swift; sourceTree = "<group>"; };
 		3639656826F113F300F6A86D /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		366992DA2717260000071B16 /* iconLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLogo.png; sourceTree = "<group>"; };
-		36850F7826F9B17C00A8E692 /* iconLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconLogo.png; path = ../../../iconLogo.png; sourceTree = "<group>"; };
 		369085D926F1366800ED877E /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		369085DB26F1397000ED877E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		3697932B27062DB200831816 /* HighscoresTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresTVC.swift; sourceTree = "<group>"; };
@@ -67,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				3639654C26F10D2900F6A86D /* GymAssist */,
+				366992DA2717260000071B16 /* iconLogo.png */,
 				3639654B26F10D2900F6A86D /* Products */,
 				8130E6CB16FCABA2EC107768 /* Pods */,
 				A7888CC4F94DC119CEEA15F9 /* Frameworks */,
@@ -90,7 +89,6 @@
 				366992D82717253500071B16 /* Stroryboards */,
 				366992D9271725BC00071B16 /* Resourses */,
 				366992DB2717260C00071B16 /* Support */,
-				36850F7826F9B17C00A8E692 /* iconLogo.png */,
 			);
 			path = GymAssist;
 			sourceTree = "<group>";
@@ -138,7 +136,6 @@
 		366992D9271725BC00071B16 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				366992DA2717260000071B16 /* iconLogo.png */,
 				3639655626F10D2B00F6A86D /* Assets.xcassets */,
 			);
 			path = Resourses;
@@ -231,7 +228,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3639655A26F10D2B00F6A86D /* LaunchScreen.storyboard in Resources */,
-				36850F7926F9B17C00A8E692 /* iconLogo.png in Resources */,
 				3639655726F10D2B00F6A86D /* Assets.xcassets in Resources */,
 				3639655526F10D2900F6A86D /* Main.storyboard in Resources */,
 			);
@@ -374,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -429,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

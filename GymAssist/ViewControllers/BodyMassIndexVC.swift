@@ -46,6 +46,13 @@ class BodyMassIndexVC: UIViewController {
         return result
     }
     
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
     private func setBMIhelpInfo() {
         bmiInfoTextView.text =
         """
@@ -61,12 +68,6 @@ class BodyMassIndexVC: UIViewController {
         30,00 — 34,99 Ожирение 1 степени
         35,00 — 49,99 Ожирение 2 степени
         """
-    }
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true)
     }
     
     @objc private func didTapDone() {
