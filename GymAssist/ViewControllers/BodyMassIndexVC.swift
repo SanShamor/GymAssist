@@ -21,33 +21,42 @@ class BodyMassIndexVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBMIhelpInfo()
+        
+        weightTextField.delegate = self
+        heightTextField.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func calculateButtonTapped(_ sender: Any) {
-        let weight = weightTextField.text ?? "1"
-        weightValue = Double(weight) ?? 1.0
-        let height = heightTextField.text ?? "1"
-        heightValue = Double(height) ?? 1.0
-        
-        let result = getBmiResult()
-        resultValueLabel.text = "Ваш BMI: \(result)"
-        
-        if result > 18 && result < 25 {
-            resultValueLabel.textColor = .green
-        } else {
-            resultValueLabel.textColor = .yellow
-        }
+        resultValueLabel.text = ""
+        didTapDone()
+        getBmiResult()
     }
     
     @objc private func didTapDone() {
         view.endEditing(true)
     }
     
-    private func getBmiResult() -> Double {
+    private func getBmiResult() {
+        weightValue = Double(weightTextField.text ?? "1") ?? 1.0
+        heightValue = Double(heightTextField.text ?? "1") ?? 1.0
         let height = (heightValue / 100) * (heightValue / 100)
         var result = weightValue / height
         result = round(result * 100) / 100.0
-        return result
+        
+        guard result > 15 && result < 70 else {
+            return showAlert(title: "Wrong format!", message: "Please enter correct value")
+        }
+        
+        resultValueLabel.text = "Ваш BMI: \(result)"
+        if result > 18 && result < 25 {
+            resultValueLabel.textColor = .green
+        } else {
+            resultValueLabel.textColor = .yellow
+        }
+        
     }
     
     private func setBMIhelpInfo() {
@@ -77,10 +86,10 @@ class BodyMassIndexVC: UIViewController {
 }
 extension BodyMassIndexVC: UITextFieldDelegate {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+        }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -94,8 +103,12 @@ extension BodyMassIndexVC: UITextFieldDelegate {
             }
             return
         }
-        
-        showAlert(title: "Wrong format!", message: "Please enter correct value")
+
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -120,3 +133,4 @@ extension BodyMassIndexVC: UITextFieldDelegate {
     }
     
 }
+

@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOR-Mq-hdR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2179.9065420560746" y="-75.161987041036724"/>
+            <point key="canvasLocation" x="2151" y="-75"/>
         </scene>
         <!--Тренировки-->
         <scene sceneID="Dl3-3q-Mdf">
@@ -415,7 +415,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="48S-vF-8Qq">
-                                <rect key="frame" x="15" y="79" width="384" height="150"/>
+                                <rect key="frame" x="15" y="69" width="384" height="149"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вес (кг):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGO-99-iTX">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="25.5"/>
@@ -424,30 +424,27 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight (KG)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vcv-7V-vEb">
-                                        <rect key="frame" x="0.0" y="35.5" width="384" height="35"/>
+                                        <rect key="frame" x="0.0" y="35.5" width="384" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рост (см):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-TJ-GVM">
-                                        <rect key="frame" x="0.0" y="80.5" width="384" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="79.5" width="384" height="25.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height(SM)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-XT-liZ">
-                                        <rect key="frame" x="0.0" y="116" width="384" height="34"/>
+                                        <rect key="frame" x="0.0" y="115" width="384" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="3Mj-Lv-Opg"/>
-                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvn-jE-ybe">
-                                <rect key="frame" x="20" y="254" width="374" height="50"/>
+                                <rect key="frame" x="20" y="243" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3fr-Kr-DqQ"/>
                                 </constraints>
@@ -477,7 +474,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfY-hQ-kiF">
-                                <rect key="frame" x="50" y="306" width="314" height="17"/>
+                                <rect key="frame" x="50" y="295" width="314" height="17"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Для расчета введите ваши показатели">
                                         <attributes>
@@ -503,7 +500,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iF-iv-Z0p">
-                                <rect key="frame" x="15" y="338" width="384" height="370"/>
+                                <rect key="frame" x="15" y="327" width="384" height="381"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.62417994379999997" green="0.64948453610000001" blue="0.64948453610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -514,7 +511,7 @@
                         <color key="backgroundColor" red="0.1686576903" green="0.17254441979999999" blue="0.17254927749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="UfY-hQ-kiF" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="50" id="4vU-Hp-77E"/>
-                            <constraint firstItem="48S-vF-8Qq" firstAttribute="top" secondItem="74y-tw-yu5" secondAttribute="top" constant="35" id="82O-zz-bjL"/>
+                            <constraint firstItem="48S-vF-8Qq" firstAttribute="top" secondItem="74y-tw-yu5" secondAttribute="top" constant="25" id="82O-zz-bjL"/>
                             <constraint firstItem="3iF-iv-Z0p" firstAttribute="leading" secondItem="74y-tw-yu5" secondAttribute="leading" constant="15" id="8xH-ry-r7I"/>
                             <constraint firstItem="74y-tw-yu5" firstAttribute="bottom" secondItem="iQS-fN-Jhj" secondAttribute="bottom" constant="25" id="DB6-dd-iga"/>
                             <constraint firstItem="74y-tw-yu5" firstAttribute="trailing" secondItem="48S-vF-8Qq" secondAttribute="trailing" constant="15" id="E97-kf-dfM"/>
