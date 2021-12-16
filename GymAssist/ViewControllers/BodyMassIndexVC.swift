@@ -39,18 +39,15 @@ class BodyMassIndexVC: UIViewController {
         }
     }
     
+    @objc private func didTapDone() {
+        view.endEditing(true)
+    }
+    
     private func getBmiResult() -> Double {
         let height = (heightValue / 100) * (heightValue / 100)
         var result = weightValue / height
         result = round(result * 100) / 100.0
         return result
-    }
-    
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true)
     }
     
     private func setBMIhelpInfo() {
@@ -70,8 +67,11 @@ class BodyMassIndexVC: UIViewController {
         """
     }
     
-    @objc private func didTapDone() {
-        view.endEditing(true)
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
     
 }
@@ -83,7 +83,6 @@ extension BodyMassIndexVC: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
         guard let text = textField.text else { return }
         
         if let currentValue = Double(text) {
@@ -93,7 +92,6 @@ extension BodyMassIndexVC: UITextFieldDelegate {
             default:
                 heightValue = currentValue
             }
-            
             return
         }
         
@@ -120,4 +118,5 @@ extension BodyMassIndexVC: UITextFieldDelegate {
         
         keyboardToolbar.items = [flexBarButton, doneButton]
     }
+    
 }

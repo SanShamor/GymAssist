@@ -14,7 +14,6 @@ extension UIAlertController {
     }
         
     func action(with taskList: TaskList?, completion: @escaping (String) -> Void) {
-        
         let doneButton = taskList == nil ? "Save" : "Update"
                 
         let saveAction = UIAlertAction(title: doneButton, style: .default) { _ in
@@ -34,7 +33,6 @@ extension UIAlertController {
     }
     
     func action(with task: Task?, completion: @escaping (String, String) -> Void) {
-                        
         let title = task == nil ? "Save" : "Update"
         
         let saveAction = UIAlertAction(title: title, style: .default) { _ in
@@ -57,10 +55,10 @@ extension UIAlertController {
             textField.placeholder = "Название упражнения"
             textField.text = task?.name
         }
-        
         addTextField { textField in
             textField.placeholder = "Вес / Колличество повторений"
             textField.text = task?.note
         }
     }
+    
 }

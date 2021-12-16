@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+import UIKit
 
 class TaskListTVC: UITableViewController {
     
@@ -13,6 +14,8 @@ class TaskListTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationTitle()
         createTestData()
         taskLists = StorageManager.shared.realm.objects(TaskList.self)
     }
@@ -22,20 +25,30 @@ class TaskListTVC: UITableViewController {
         tableView.reloadData()
     }
     
-    // MARK: - Table view data source
+    // MARK: - TableView DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         taskLists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath) as! TaskListCell
         let taskList = taskLists[indexPath.row]
-        cell.configure(with: taskList)
+        cell.configureTaskList(with: taskList)
         
         return cell
     }
     
-    // MARK: - TableViewDelegate
+    // MARK: - TableView Delegate
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0.3 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+            })
+    }
+    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let taskList = taskLists[indexPath.row]
@@ -51,7 +64,6 @@ class TaskListTVC: UITableViewController {
             }
             isDone(true)
         }
-        
         editAction.backgroundColor = .orange
         
         return UISwipeActionsConfiguration(actions: [editAction, deleteAction])
@@ -64,15 +76,19 @@ class TaskListTVC: UITableViewController {
         tasksVC.taskList = taskList
     }
     
+    // MARK: - IBAction & AnotherMethods
+    
     @IBAction func addButtonPressed(_ sender: Any) {
         showAlert()
     }
     
-    @IBAction func sortingList(_ sender: UISegmentedControl) {
-        taskLists = sender.selectedSegmentIndex == 0
-        ? taskLists.sorted(byKeyPath: "name")
-        : taskLists.sorted(byKeyPath: "date")
-        tableView.reloadData()
+    private func setNavigationTitle() {
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor(#colorLiteral(red: 1, green: 0.1745384336, blue: 0.1752099395, alpha: 1))]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(#colorLiteral(red: 1, green: 0.1745384336, blue: 0.1752099395, alpha: 1))]
+        appearance.backgroundColor = #colorLiteral(red: 0.1677677035, green: 0.1727086902, blue: 0.1726246774, alpha: 1)
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
     }
     
     private func createTestData() {
@@ -108,4 +124,5 @@ extension TaskListTVC {
         let rowIndex = IndexPath(row: taskLists.count - 1, section: 0)
         tableView.insertRows(at: [rowIndex], with: .automatic)
     }
+    
 }

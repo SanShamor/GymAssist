@@ -9,13 +9,14 @@ import RealmSwift
 
 class DetailTaskVC: UIViewController {
     
+    // MARK: - IBOuthlets
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startStopTimerButton: UIButton!
     @IBOutlet weak var resetTimerButton: UIButton!
     @IBOutlet weak var saveResultButton: UIButton!
     
     @IBOutlet weak var exerciseNameLabel: UILabel!
-    @IBOutlet weak var exerciseDescriptionLabel: UILabel!
+    @IBOutlet weak var exerciseDescriptionTextView: UITextView!
     
     @IBOutlet weak var userScoreLabel: UILabel!
     @IBOutlet weak var roundsCountLabel: UILabel!
@@ -24,6 +25,7 @@ class DetailTaskVC: UIViewController {
     @IBOutlet weak var nextExerciseButton: UIButton!
     @IBOutlet weak var previousExerciseButton: UIButton!
     
+    // MARK: - Properties
     var usersExercises: TaskList!
     private var lapsResults: [String] = []
     private var exerciseNames: [String] = []
@@ -47,8 +49,8 @@ class DetailTaskVC: UIViewController {
         startStopTimerButton.backgroundColor = #colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1)
         resetTimerButton.backgroundColor = #colorLiteral(red: 0.9988579154, green: 0.1766675115, blue: 0.1742589176, alpha: 1)
     }
-    // MARK: - IBActions
     
+    // MARK: - IBActions
     @IBAction func startStopButtonTapped(_ sender: Any) {
         
         if timerTotalCountingIsWorking {
@@ -115,7 +117,7 @@ class DetailTaskVC: UIViewController {
         }
     }
     
-    // MARK: - Timer Methods
+    // MARK: - Timer's Methods
     @objc func timerCounter() -> Void {
         countTimerTotal = countTimerTotal + 1
         countTimerForLap = countTimerForLap + 1
@@ -203,11 +205,10 @@ class DetailTaskVC: UIViewController {
     }
     
     private func changeExerciseNext(taskList: TaskList) {
-        
         if exercisePositionInList < (taskList.tasks.count - 1) {
             exercisePositionInList += 1
             previousExerciseButton.isHidden = false
-            exerciseDescriptionLabel.text = (exerciseDescription[exercisePositionInList])
+            exerciseDescriptionTextView.text = (exerciseDescription[exercisePositionInList])
             exerciseNameLabel.text = (exerciseNames[exercisePositionInList])
         } else {
             finishRound()
@@ -222,7 +223,7 @@ class DetailTaskVC: UIViewController {
     private func changeExercisePrevious(taskList: TaskList) {
         exercisePositionInList -= 1
         exerciseNameLabel.text = (exerciseNames[exercisePositionInList])
-        exerciseDescriptionLabel.text = (exerciseDescription[exercisePositionInList])
+        exerciseDescriptionTextView.text = (exerciseDescription[exercisePositionInList])
         if exercisePositionInList == 0 {
             previousExerciseButton.isHidden = true
         }
@@ -234,7 +235,7 @@ class DetailTaskVC: UIViewController {
         lapsResults = []
         roundsCountLabel.text = String(roundsCount)
         exerciseNameLabel.text = (exerciseNames[exercisePositionInList])
-        exerciseDescriptionLabel.text = (exerciseDescription[exercisePositionInList])
+        exerciseDescriptionTextView.text = (exerciseDescription[exercisePositionInList])
     }
     
     private func resetValues() {
@@ -242,6 +243,7 @@ class DetailTaskVC: UIViewController {
         finishedRounds = 0
         userScoreLabel.text = ""
         
+        timerLabel.isHidden = false
         saveResultButton.isHidden = true
         nextExerciseButton.isHidden = true
         previousExerciseButton.isHidden = true
@@ -257,24 +259,26 @@ class DetailTaskVC: UIViewController {
         exercisePositionInList = 0
         previousExerciseButton.isHidden = true
         exerciseNameLabel.text = (exerciseNames[exercisePositionInList])
-        exerciseDescriptionLabel.text = (exerciseDescription[exercisePositionInList])
+        exerciseDescriptionTextView.text = (exerciseDescription[exercisePositionInList])
         userScoreLabel.text = "Закончено раундов: \(String(finishedRounds))/\(roundsCount)"
     }
     
     private func finishWorkout() {
         let totalWorkoutTime = getTimerResultValue()
         let lapsResult = showTimeResultInLabel()
-        exerciseNameLabel.text = "Времени потрачено:\n\(totalWorkoutTime)"
-        exerciseDescriptionLabel.text = "\(lapsResult)"
+        exerciseNameLabel.text = "Тренировка окончена\n\(totalWorkoutTime)"
+        exerciseDescriptionTextView.text = "\(lapsResult)"
         saveResultButton.isHidden = false
         timerTotalCountingIsWorking = false
         startStopTimerButton.isHidden = true
+        timerLabel.isHidden = true
         resetTimerButton.isHidden = true
         userScoreLabel.isHidden = true
         
         stoppingTimer()
         setInterfaceWhenTimerStop()
     }
+    
     private func saveLapTime() {
         let time = secondsToHoursMinutesSeconds(seconds: countTimerForLap)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)

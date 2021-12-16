@@ -92,5 +92,11 @@ class StorageManager {
         }
     }
     
+    func move(array: List<Task>, from: Int, to: Int) {
+        write {
+            array.move(from: from, to: to)
+        }
+    }
+    
 }
 

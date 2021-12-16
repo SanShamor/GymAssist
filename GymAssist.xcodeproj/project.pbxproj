@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3611079126F3D12200EC9E91 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611079026F3D12200EC9E91 /* DataManager.swift */; };
-		3611079326F3D71600EC9E91 /* Extension + UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611079226F3D71600EC9E91 /* Extension + UITableViewCell.swift */; };
 		361967F326F7A17F000F90A2 /* DetailTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361967F226F7A17F000F90A2 /* DetailTaskVC.swift */; };
 		3639654E26F10D2900F6A86D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639654D26F10D2900F6A86D /* AppDelegate.swift */; };
 		3639655026F10D2900F6A86D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639654F26F10D2900F6A86D /* SceneDelegate.swift */; };
@@ -18,9 +17,12 @@
 		3639656226F10FD500F6A86D /* TasksTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656126F10FD500F6A86D /* TasksTVC.swift */; };
 		3639656426F1103300F6A86D /* TaskListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656326F1103300F6A86D /* TaskListTVC.swift */; };
 		3639656926F113F300F6A86D /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639656826F113F300F6A86D /* AlertController.swift */; };
+		3666387C2767C1F20052E71B /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666387B2767C1F20052E71B /* TaskListCell.swift */; };
 		369085DA26F1366800ED877E /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085D926F1366800ED877E /* TaskList.swift */; };
 		369085DC26F1397000ED877E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085DB26F1397000ED877E /* StorageManager.swift */; };
 		3697932C27062DB200831816 /* HighscoresTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3697932B27062DB200831816 /* HighscoresTVC.swift */; };
+		36B89286276B72F800E812E0 /* iconLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 36B89285276B72F800E812E0 /* iconLogo.png */; };
+		36C30B0B2766800100BB0307 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C30B0A2766800100BB0307 /* ExerciseCell.swift */; };
 		36D979E22703A7970040774E /* BodyMassIndexVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D979E12703A7970040774E /* BodyMassIndexVC.swift */; };
 		6F9C5340A586459A4E41C2BC /* Pods_GymAssist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7AB73D71C644BC84D891DB /* Pods_GymAssist.framework */; };
 /* End PBXBuildFile section */
@@ -28,7 +30,6 @@
 /* Begin PBXFileReference section */
 		2B7430C14FE123BD9284F923 /* Pods-GymAssist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymAssist.release.xcconfig"; path = "Target Support Files/Pods-GymAssist/Pods-GymAssist.release.xcconfig"; sourceTree = "<group>"; };
 		3611079026F3D12200EC9E91 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		3611079226F3D71600EC9E91 /* Extension + UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITableViewCell.swift"; sourceTree = "<group>"; };
 		361967F226F7A17F000F90A2 /* DetailTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskVC.swift; sourceTree = "<group>"; };
 		3639654A26F10D2900F6A86D /* GymAssist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymAssist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3639654D26F10D2900F6A86D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,10 +41,12 @@
 		3639656126F10FD500F6A86D /* TasksTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTVC.swift; sourceTree = "<group>"; };
 		3639656326F1103300F6A86D /* TaskListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTVC.swift; sourceTree = "<group>"; };
 		3639656826F113F300F6A86D /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
-		366992DA2717260000071B16 /* iconLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLogo.png; sourceTree = "<group>"; };
+		3666387B2767C1F20052E71B /* TaskListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
 		369085D926F1366800ED877E /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		369085DB26F1397000ED877E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		3697932B27062DB200831816 /* HighscoresTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresTVC.swift; sourceTree = "<group>"; };
+		36B89285276B72F800E812E0 /* iconLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconLogo.png; path = "../../../../GymAssist Materials/iconLogo.png"; sourceTree = "<group>"; };
+		36C30B0A2766800100BB0307 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		36D979E12703A7970040774E /* BodyMassIndexVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMassIndexVC.swift; sourceTree = "<group>"; };
 		71EA0E392B812A31DDB6AFD1 /* Pods-GymAssist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymAssist.debug.xcconfig"; path = "Target Support Files/Pods-GymAssist/Pods-GymAssist.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7AB73D71C644BC84D891DB /* Pods_GymAssist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GymAssist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				3639654C26F10D2900F6A86D /* GymAssist */,
-				366992DA2717260000071B16 /* iconLogo.png */,
 				3639654B26F10D2900F6A86D /* Products */,
 				8130E6CB16FCABA2EC107768 /* Pods */,
 				A7888CC4F94DC119CEEA15F9 /* Frameworks */,
@@ -83,8 +85,9 @@
 		3639654C26F10D2900F6A86D /* GymAssist */ = {
 			isa = PBXGroup;
 			children = (
-				3639656526F1107700F6A86D /* ViewControllers */,
 				3639656626F1109F00F6A86D /* Model */,
+				3639656526F1107700F6A86D /* ViewControllers */,
+				36736915276B6378002BD327 /* Views */,
 				3639656726F110E400F6A86D /* Services */,
 				366992D82717253500071B16 /* Stroryboards */,
 				366992D9271725BC00071B16 /* Resourses */,
@@ -102,7 +105,6 @@
 				36D979E12703A7970040774E /* BodyMassIndexVC.swift */,
 				3697932B27062DB200831816 /* HighscoresTVC.swift */,
 				3639656826F113F300F6A86D /* AlertController.swift */,
-				3611079226F3D71600EC9E91 /* Extension + UITableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -147,8 +149,18 @@
 				3639654D26F10D2900F6A86D /* AppDelegate.swift */,
 				3639654F26F10D2900F6A86D /* SceneDelegate.swift */,
 				3639655B26F10D2B00F6A86D /* Info.plist */,
+				36B89285276B72F800E812E0 /* iconLogo.png */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		36736915276B6378002BD327 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3666387B2767C1F20052E71B /* TaskListCell.swift */,
+				36C30B0A2766800100BB0307 /* ExerciseCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8130E6CB16FCABA2EC107768 /* Pods */ = {
@@ -228,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3639655A26F10D2B00F6A86D /* LaunchScreen.storyboard in Resources */,
+				36B89286276B72F800E812E0 /* iconLogo.png in Resources */,
 				3639655726F10D2B00F6A86D /* Assets.xcassets in Resources */,
 				3639655526F10D2900F6A86D /* Main.storyboard in Resources */,
 			);
@@ -282,16 +295,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3666387C2767C1F20052E71B /* TaskListCell.swift in Sources */,
 				369085DA26F1366800ED877E /* TaskList.swift in Sources */,
 				3611079126F3D12200EC9E91 /* DataManager.swift in Sources */,
 				3639654E26F10D2900F6A86D /* AppDelegate.swift in Sources */,
+				36C30B0B2766800100BB0307 /* ExerciseCell.swift in Sources */,
 				3639656926F113F300F6A86D /* AlertController.swift in Sources */,
 				361967F326F7A17F000F90A2 /* DetailTaskVC.swift in Sources */,
 				369085DC26F1397000ED877E /* StorageManager.swift in Sources */,
 				3697932C27062DB200831816 /* HighscoresTVC.swift in Sources */,
 				36D979E22703A7970040774E /* BodyMassIndexVC.swift in Sources */,
 				3639656426F1103300F6A86D /* TaskListTVC.swift in Sources */,
-				3611079326F3D71600EC9E91 /* Extension + UITableViewCell.swift in Sources */,
 				3639655026F10D2900F6A86D /* SceneDelegate.swift in Sources */,
 				3639656226F10FD500F6A86D /* TasksTVC.swift in Sources */,
 			);
@@ -442,13 +456,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5G6Q84AD3R;
 				INFOPLIST_FILE = GymAssist/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Swiftbook.GymAssist;
+				PRODUCT_BUNDLE_IDENTIFIER = "sanshamor-sApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -462,13 +477,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5G6Q84AD3R;
 				INFOPLIST_FILE = GymAssist/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Swiftbook.GymAssist;
+				PRODUCT_BUNDLE_IDENTIFIER = "sanshamor-sApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
