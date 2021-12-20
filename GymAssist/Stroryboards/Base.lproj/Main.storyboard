@@ -190,7 +190,7 @@
                                     <action selector="startStopButtonTapped:" destination="RmJ-Gx-7RQ" eventType="touchUpInside" id="Zgm-zm-Oqc"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeB-eL-ZnE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeB-eL-ZnE">
                                 <rect key="frame" x="15" y="728" width="384" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="DNb-Ml-Y0I"/>

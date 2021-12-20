@@ -77,7 +77,7 @@ class TasksTVC: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailTaskVC = segue.destination as! DetailTaskVC
-        detailTaskVC.usersExercises = taskList
+        detailTaskVC.currentTaskList = taskList
     }
     
     @objc private func addButtonPressed() {
