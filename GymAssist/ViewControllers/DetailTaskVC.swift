@@ -89,7 +89,7 @@ class DetailTaskVC: UIViewController {
             } else {
                 //Запустить таймер с нуля
                 setStartTime(date: Date())
-                lapStartTime = Date()
+                lapStartTime = startTime ?? Date()
             }
             
             startTimer()
@@ -169,7 +169,6 @@ class DetailTaskVC: UIViewController {
     }
     
     func startTimer() {
-        print("ветка работы в фоне 2")
         scheduledTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refreshValue), userInfo: nil, repeats: true)
         setTimerCounting(true)
         setUIWhenTimerRun()
@@ -237,12 +236,11 @@ class DetailTaskVC: UIViewController {
     }
     
     private func saveLapTime() {
-        let currentDate = Date()
-        let time = calcRestartTime(start: lapStartTime, stop: currentDate)
+        let time = calcRestartTime(start: lapStartTime, stop: stopTime ?? Date())
         let diff = Date().timeIntervalSince(time)
         let detailTime = secondsToHoursMinutesSeconds(Int(diff))
         let timeString = makeTimeString(hour: detailTime.0, min: detailTime.1, sec: detailTime.2)
-        let roundResult = "\(finishedRounds)) \(timeString)"
+        let roundResult = "\(finishedRounds)) \(timeString) , \(String(format: "%.2f", diff))"
         lapsResults.append(roundResult)
         lapStartTime = Date()
     }

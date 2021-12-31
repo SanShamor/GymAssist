@@ -21,6 +21,7 @@ class BodyMassIndexVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBMIhelpInfo()
+        setThemeMode()
         
         weightTextField.delegate = self
         heightTextField.delegate = self
@@ -57,6 +58,21 @@ class BodyMassIndexVC: UIViewController {
             resultValueLabel.textColor = .yellow
         }
         
+    }
+    
+    private func setThemeMode() {
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            weightTextField.textColor = #colorLiteral(red: 0.1890899241, green: 0.6003474593, blue: 0.4615892172, alpha: 1)
+            weightTextField.backgroundColor = #colorLiteral(red: 0.1677677035, green: 0.1727086902, blue: 0.1726246774, alpha: 1)
+            heightTextField.textColor = #colorLiteral(red: 0.1890899241, green: 0.6003474593, blue: 0.4615892172, alpha: 1)
+            heightTextField.backgroundColor = #colorLiteral(red: 0.1677677035, green: 0.1727086902, blue: 0.1726246774, alpha: 1)
+        default:
+            weightTextField.textColor = .darkGray
+            weightTextField.backgroundColor = .white
+            heightTextField.textColor = .darkGray
+            heightTextField.backgroundColor = .white
+        }
     }
     
     private func setBMIhelpInfo() {
