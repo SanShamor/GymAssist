@@ -42,8 +42,9 @@ class HighscoresTVC: UITableViewController {
         content.text = highscore.totalTime
         
         let formatter = DateFormatter()
-        formatter.timeStyle = .medium
+        //formatter.timeStyle = .medium
         formatter.dateStyle = .long
+        formatter.locale = Locale(identifier: "ru_RU")
         let dateTimeString = formatter.string(from: highscore.date)
         
         content.secondaryText = String(dateTimeString)
@@ -72,7 +73,7 @@ class HighscoresTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.alpha = 0
         UIView.animate(
-            withDuration: 0.9,
+            withDuration: 0.3,
             delay: 0.3 * Double(indexPath.row),
             animations: {
                 cell.alpha = 1
