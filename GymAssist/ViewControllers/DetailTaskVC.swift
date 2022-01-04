@@ -239,8 +239,12 @@ class DetailTaskVC: UIViewController {
         let time = calcRestartTime(start: lapStartTime, stop: stopTime ?? Date())
         let diff = Date().timeIntervalSince(time)
         let detailTime = secondsToHoursMinutesSeconds(Int(diff))
-        let timeString = makeTimeString(hour: detailTime.0, min: detailTime.1, sec: detailTime.2)
-        let roundResult = "\(finishedRounds)) \(timeString) , \(String(format: "%.2f", diff))"
+        
+        let msAll = Int(diff * (Double(1000)))
+        let msRemain = (msAll % 1000) / 10
+        let timeInString = makeTimeString(hour: detailTime.0, min: detailTime.1, sec: detailTime.2)
+        let roundResult = "\(finishedRounds)) \(timeInString).\(String(format: "%02d", msRemain))"
+        
         lapsResults.append(roundResult)
         lapStartTime = Date()
     }
@@ -397,7 +401,7 @@ class DetailTaskVC: UIViewController {
     }
     
 }
-    // MARK: Extension
+// MARK: Extension
 extension DetailTaskVC {
     private func saveHighscore(withTime timeResult: String) {
         let result = Highscore()
