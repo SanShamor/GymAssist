@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Charts
 
-class BodyMassIndexVC: UIViewController {
+class BodyMassIndexVC: UIViewController, ChartViewDelegate {
+    
+    @IBOutlet weak var chartView: UIView!
+    @IBOutlet weak var updateWeightButton: UIButton!
     
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
@@ -15,9 +19,11 @@ class BodyMassIndexVC: UIViewController {
     @IBOutlet weak var resultValueLabel: UILabel!
     @IBOutlet weak var bmiInfoTextView: UITextView!
     
+    private let dataManager = DataManager.shared
+    private let lineChart = LineChartView()
+    
     private var weightValue: Double = 1.0
     private var heightValue: Double = 1.0
-    private let dataManager = DataManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,7 @@ class BodyMassIndexVC: UIViewController {
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+
     }
     
     @IBAction func calculateButtonTapped(_ sender: Any) {
@@ -39,6 +46,11 @@ class BodyMassIndexVC: UIViewController {
     
     @objc private func didTapDone() {
         view.endEditing(true)
+    }
+    
+    private func setWeightButton() {
+        updateWeightButton.layer.cornerRadius = 15
+        updateWeightButton.titleLabel?.font = UIFont(name: "GillSans-Italic", size: 23)
     }
     
     private func getBmiResult() {
