@@ -17,6 +17,7 @@ class BodyMassIndexVC: UIViewController {
     
     private var weightValue: Double = 1.0
     private var heightValue: Double = 1.0
+    private let dataManager = DataManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,20 +77,8 @@ class BodyMassIndexVC: UIViewController {
     }
     
     private func setBMIhelpInfo() {
-        bmiInfoTextView.text =
-        """
-        Индекс массы тела (BMI) — величина, позволяющая оценить степень соответствия массы человека и его роста и тем самым косвенно судить о том, является ли масса недостаточной, нормальной или избыточной.
-        ИМТ важен при определении показаний для лечения.
-        """
-        bmiCategoriesLabel.text =
-        """
-         BMI           Соответствие
-        16,00 — 18,49 Недостаточная масса
-        18,50 — 24,99 Норма
-        25,00 — 29,99 Предожирение
-        30,00 — 34,99 Ожирение 1 степени
-        35,00 — 49,99 Ожирение 2 степени
-        """
+        bmiInfoTextView.text = dataManager.bmiInfo
+        bmiCategoriesLabel.text = dataManager.bmiCategories
     }
     
     private func showAlert(title: String, message: String) {
