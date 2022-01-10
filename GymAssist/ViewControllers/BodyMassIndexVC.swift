@@ -32,10 +32,18 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         
         weightTextField.delegate = self
         heightTextField.delegate = self
+        lineChart.delegate = self
+        lineChart.frame = CGRect (x: 0,
+                                  y: 0,
+                                  width: chartView.frame.size.height,
+                                  height: self.chartView.frame.size.height)
+        chartView.addSubview(lineChart)
+        setData()
+        customizeLineChart()
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-
+        
     }
     
     @IBAction func calculateButtonTapped(_ sender: Any) {
@@ -51,6 +59,52 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
     private func setWeightButton() {
         updateWeightButton.layer.cornerRadius = 15
         updateWeightButton.titleLabel?.font = UIFont(name: "GillSans-Italic", size: 23)
+        
+    }
+    
+    private func setData() {
+        let set = getTestDataSet()
+        set.setColor(.white)
+        set.circleHoleColor = .red
+        set.setCircleColor(.lightGray)
+        
+        let data = LineChartData(dataSet: set)
+        lineChart.data = data
+    }
+    private func getTestDataSet() -> LineChartDataSet  {
+        let set = LineChartDataSet(entries: [
+            ChartDataEntry(x: 1 , y: 65),
+            ChartDataEntry(x: 2 , y: 63.8),
+            ChartDataEntry(x: 3 , y: 63.3),
+            ChartDataEntry(x: 4 , y: 64.1),
+            ChartDataEntry(x: 5 , y: 63.6),
+            ChartDataEntry(x: 6 , y: 62.9),
+            ChartDataEntry(x: 7 , y: 63.5),
+            ChartDataEntry(x: 10 , y: 64.1),
+            ChartDataEntry(x: 11 , y: 64.7),
+            ChartDataEntry(x: 13 , y: 65.3),
+            ChartDataEntry(x: 15 , y: 65.0),
+            ChartDataEntry(x: 17 , y: 65.9),
+            ChartDataEntry(x: 20 , y: 65.7)
+        ])
+        return set
+    }
+    private func customizeLineChart() {
+        lineChart.noDataText = "Добавьте данные о весе"
+        lineChart.backgroundColor = .darkGray
+        lineChart.rightAxis.enabled = false
+        lineChart.animate(xAxisDuration: 2)
+        
+        lineChart.xAxis.labelPosition = .bottom
+        lineChart.xAxis.labelTextColor = .lightGray
+        lineChart.xAxis.axisLineColor = .red
+        
+        let yAxis = lineChart.leftAxis
+        yAxis.labelFont = .boldSystemFont(ofSize: 12)
+        yAxis.setLabelCount(5, force: false)
+        yAxis.labelTextColor = .lightGray
+        yAxis.axisLineColor = .red
+        yAxis.labelPosition = .outsideChart
     }
     
     private func getBmiResult() {
@@ -104,9 +158,9 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
 extension BodyMassIndexVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-        }
+        textField.resignFirstResponder()
+        return true
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -120,7 +174,7 @@ extension BodyMassIndexVC: UITextFieldDelegate {
             }
             return
         }
-
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
