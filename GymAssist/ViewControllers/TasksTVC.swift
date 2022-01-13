@@ -50,7 +50,8 @@ class TasksTVC: UITableViewController {
         let task = taskList.tasks[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-            StorageManager.shared.delete(task: task)
+            //StorageManager.shared.delete(task: task)
+            StorageManager.shared.deleteFromRealm(type: task)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
@@ -138,7 +139,7 @@ extension TasksTVC {
         
         alert.action(with: task) { newValue, note in
             if let task = task, let completion = completion {
-                StorageManager.shared.edit(task: task, name: newValue, note: note)
+                StorageManager.shared.edit(type: task, name: newValue, note: note)
                 completion()
             } else {
                 self.saveTask(withName: newValue, andNote: note)
@@ -150,7 +151,7 @@ extension TasksTVC {
     
     private func saveTask(withName name: String, andNote note: String) {
         let task = Task(value: [name, note])
-        StorageManager.shared.save(task: task, in: taskList)
+        StorageManager.shared.saveInTaskList(type: task, taskList: taskList)
         let rowIndex = IndexPath(row: taskList.tasks.count - 1 , section: 0)
         tableView.insertRows(at: [rowIndex], with: .automatic)
     }

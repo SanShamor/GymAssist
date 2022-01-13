@@ -14,64 +14,6 @@ class StorageManager {
     
     private init() {}
     
-    // MARK: - Work with Task Lists
-    func save(taskLists: [TaskList]) {
-        write {
-            realm.add(taskLists)
-        }
-    }
-    
-    func save(taskList: TaskList) {
-        write {
-            realm.add(taskList)
-        }
-    }
-    
-    func edit(taskList: TaskList, newValue: String) {
-        write {
-            taskList.name = newValue
-        }
-    }
-    
-    func delete(taskList: TaskList) {
-        write {
-            realm.delete(taskList.tasks)
-            realm.delete(taskList)
-        }
-    }
-    
-    func done(taskList: TaskList) {
-        write {
-            taskList.tasks.setValue(true, forKey: "isComplete")
-        }
-    }
-    
-    // MARK: - Work with Tasks
-    func save(task: Task, in taskList: TaskList) {
-        write {
-            taskList.tasks.append(task)
-        }
-    }
-    
-    func delete(task: Task) {
-        write {
-            realm.delete(task)
-        }
-    }
-    
-    func edit(task: Task, name: String, note: String) {
-        write {
-            task.name = name
-            task.note = note
-        }
-    }
-    
-    func done(task: Task) {
-        write {
-            task.isComplete.toggle()
-        }
-    }
-    
     private func write(_ completion: () -> Void) {
         do {
             try realm.write { completion() }
@@ -79,22 +21,57 @@ class StorageManager {
             print(error)
         }
     }
-    // MARK: - Work with Highscores
-    func save(highscore: Highscore, in taskList: TaskList) {
+    
+    func saveInRealm(type: Object) {
         write {
-            taskList.userHighscores.append(highscore)
+            realm.add(type)
         }
     }
     
-    func delete(highscore: Highscore){
+    func deleteFromRealm(type: Object) {
         write {
-            realm.delete(highscore)
+            guard let object = type as? TaskList else { return realm.delete(type) }
+            realm.delete(object.tasks)
+            realm.delete(object.userHighscores)
+            realm.delete(object)
+        }
+    }
+    
+    func edit(type: Object, name: String, note: String) {
+        write {
+            guard let object = type as? Task else {
+                guard let taskList = type as? TaskList else { return }
+                
+                return taskList.name = name
+            }
+            
+            object.name = name
+            object.note = note
+        }
+    }
+    
+    func saveInTaskList(type: Object, taskList: TaskList) {
+        write {
+            guard let score = type as? Highscore else {
+                guard let task = type as? Task else { return }
+                
+                return taskList.tasks.append(task)
+            }
+            
+            taskList.userHighscores.append(score)
         }
     }
     
     func move(array: List<Task>, from: Int, to: Int) {
         write {
             array.move(from: from, to: to)
+        }
+    }
+    
+    func updateWeight(user: Profile, newWeight: Double) {
+        write {
+            user.weightHistory.append(user.weight)
+            user.weight = newWeight
         }
     }
     

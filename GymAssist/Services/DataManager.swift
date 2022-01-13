@@ -54,10 +54,15 @@ class DataManager {
             cardioTraining.tasks.insert(contentsOf: [headRotation, shoulders, handsUp, hipJoint, bendsToLegs, swingLegs, sideLunges], at: 0)
             strengthTraining.tasks.insert(contentsOf: [barbellBench, pullUp, swingKettlebell, kickBacks, extensionTwists], at: 0)
             
+            let userProfile = Profile()
+            userProfile.weight = 65.0
+            userProfile.height = 175.0
+            
             DispatchQueue.main.async {
-                StorageManager.shared.save(taskLists: [cardioTraining, strengthTraining])
+                StorageManager.shared.saveInRealm(type: cardioTraining)
+                StorageManager.shared.saveInRealm(type: strengthTraining)
+                StorageManager.shared.saveInRealm(type: userProfile)
                 completion()
-                
             }
         }
         

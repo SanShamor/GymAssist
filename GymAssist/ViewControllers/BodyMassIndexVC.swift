@@ -7,6 +7,7 @@
 
 import UIKit
 import Charts
+import RealmSwift
 
 class BodyMassIndexVC: UIViewController, ChartViewDelegate {
     
@@ -21,6 +22,7 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
     
     private let dataManager = DataManager.shared
     private let lineChart = LineChartView()
+    private var user: Results<Profile>!
     
     private var weightValue: Double = 1.0
     private var heightValue: Double = 1.0
@@ -30,6 +32,11 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         setBMIhelpInfo()
         setThemeMode()
         
+        // Testing:------
+        user = StorageManager.shared.realm.objects(Profile.self)
+        bmiInfoTextView.text = "---------------Testing-----------------\nТекущий вес: \(user.first?.weight ?? 100.500)"
+        //---------------
+        
         weightTextField.delegate = self
         heightTextField.delegate = self
         lineChart.delegate = self
@@ -38,12 +45,15 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
                                   width: chartView.frame.size.height,
                                   height: self.chartView.frame.size.height)
         chartView.addSubview(lineChart)
-        setData()
+        setDataForChart()
         customizeLineChart()
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-        
+    }
+    
+    @IBAction func updWeightButtonPressed(_ sender: Any) {
+        showAlert(with: user.first)
     }
     
     @IBAction func calculateButtonTapped(_ sender: Any) {
@@ -62,8 +72,8 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         
     }
     
-    private func setData() {
-        let set = getTestDataSet()
+    private func setDataForChart() {
+        let set = getUserDataSet()
         set.setColor(.white)
         set.circleHoleColor = .red
         set.setCircleColor(.lightGray)
@@ -71,7 +81,22 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         let data = LineChartData(dataSet: set)
         lineChart.data = data
     }
-    private func getTestDataSet() -> LineChartDataSet  {
+    
+    private func getUserDataSet() -> LineChartDataSet { // Testing
+        var entries = [ChartDataEntry] ()
+        var day = 1
+        for weight in user.first!.weightHistory {
+                    let weightY = weight
+                    day += 1
+                    let dateX = Double(day)
+                    entries.append(ChartDataEntry(x: dateX, y: weightY))
+                }
+        entries.append(ChartDataEntry(x: Double(day + 1) , y: user.first!.weight))
+                let secondSet = LineChartDataSet(entries: entries, label: "Test values")
+                return secondSet
+    }
+    
+    private func getTestDataSet() -> LineChartDataSet  { //Testing
         let set = LineChartDataSet(entries: [
             ChartDataEntry(x: 1 , y: 65),
             ChartDataEntry(x: 2 , y: 63.8),
@@ -89,6 +114,7 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         ])
         return set
     }
+    
     private func customizeLineChart() {
         lineChart.noDataText = "Добавьте данные о весе"
         lineChart.backgroundColor = .darkGray
@@ -157,6 +183,11 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
 }
 extension BodyMassIndexVC: UITextFieldDelegate {
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -175,11 +206,6 @@ extension BodyMassIndexVC: UITextFieldDelegate {
             return
         }
         
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -205,3 +231,18 @@ extension BodyMassIndexVC: UITextFieldDelegate {
     
 }
 
+extension BodyMassIndexVC {
+    private func showAlert(with profile: Profile? = nil, completion: (() -> Void)? = nil) {
+        let title = "enter weight"
+        
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Укажите ...")
+        
+        alert.action(with: user.first) { newValue in
+            let newWeight = Double(newValue)!
+            StorageManager.shared.updateWeight(user: profile!, newWeight: newWeight)
+        }
+        
+        present(alert, animated: true)
+    }
+    
+}

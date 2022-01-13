@@ -406,6 +406,6 @@ extension DetailTaskVC {
     private func saveHighscore(withTime timeResult: String) {
         let result = Highscore()
         result.totalTime = timeResult
-        StorageManager.shared.save(highscore: result, in: currentTaskList)
+        StorageManager.shared.saveInTaskList(type: result, taskList: currentTaskList)
     }
 }

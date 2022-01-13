@@ -61,4 +61,23 @@ extension UIAlertController {
         }
     }
     
+    func action(with user: Profile?, completion: @escaping (String) -> Void) {
+        let doneButton = "Обновить"
+                
+        let saveAction = UIAlertAction(title: doneButton, style: .default) { _ in
+            guard let newValue = self.textFields?.first?.text else { return }
+            guard !newValue.isEmpty else { return }
+            completion(newValue)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .destructive)
+        
+        addAction(saveAction)
+        addAction(cancelAction)
+        addTextField { textField in
+            textField.placeholder = "Название"
+            textField.text = "\(user!.weight)"
+        }
+    }
+    
 }
