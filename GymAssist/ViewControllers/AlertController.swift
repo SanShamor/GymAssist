@@ -12,10 +12,10 @@ extension UIAlertController {
     static func createAlert(withTitle title: String, andMessage message: String) -> UIAlertController {
         UIAlertController(title: title, message: message, preferredStyle: .alert)
     }
-        
+    
     func action(with taskList: TaskList?, completion: @escaping (String) -> Void) {
         let doneButton = taskList == nil ? "Save" : "Update"
-                
+        
         let saveAction = UIAlertAction(title: doneButton, style: .default) { _ in
             guard let newValue = self.textFields?.first?.text else { return }
             guard !newValue.isEmpty else { return }
@@ -61,9 +61,9 @@ extension UIAlertController {
         }
     }
     
-    func action(with user: Profile?, completion: @escaping (String) -> Void) {
+    func action(with user: Profile?, completion: @escaping  (String) -> Void) {
         let doneButton = "Обновить"
-                
+        
         let saveAction = UIAlertAction(title: doneButton, style: .default) { _ in
             guard let newValue = self.textFields?.first?.text else { return }
             guard !newValue.isEmpty else { return }
@@ -77,6 +77,24 @@ extension UIAlertController {
         addTextField { textField in
             textField.placeholder = "Название"
             textField.text = "\(user!.weight)"
+        }
+    }
+    
+    func actionCreate(completion: @escaping (String, String) -> Void) {
+        let doneButton = "Ладненько...всё указал"
+        
+        let saveAction = UIAlertAction(title: doneButton, style: .default) { _ in
+            guard let height = self.textFields?.first?.text else { return }
+            guard let weight = self.textFields?.last?.text else { return }
+            completion(height, weight)
+        }
+        
+        addAction(saveAction)
+        addTextField { textField in
+            textField.placeholder = "Рост (см)"
+        }
+        addTextField { textField in
+            textField.placeholder = "Вес(кг)"
         }
     }
     

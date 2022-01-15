@@ -10,54 +10,58 @@ import Charts
 import RealmSwift
 
 class BodyMassIndexVC: UIViewController, ChartViewDelegate {
-    
+    // MARK: - IBOuthlets
     @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var updateWeightButton: UIButton!
     
-    @IBOutlet weak var weightTextField: UITextField!
-    @IBOutlet weak var heightTextField: UITextField!
-    @IBOutlet weak var bmiCategoriesLabel: UILabel!
-    @IBOutlet weak var resultValueLabel: UILabel!
     @IBOutlet weak var bmiInfoTextView: UITextView!
+    @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
+    @IBOutlet weak var resultValueLabel: UILabel!
+    @IBOutlet weak var bmiCategoriesLabel: UILabel!
     
+    // MARK: - Properties
     private let dataManager = DataManager.shared
+    private var user: Results<Profile>?
     private let lineChart = LineChartView()
-    private var user: Results<Profile>!
     
     private var weightValue: Double = 1.0
     private var heightValue: Double = 1.0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setBMIhelpInfo()
-        setThemeMode()
-        
-        // Testing:------
-        user = StorageManager.shared.realm.objects(Profile.self)
-        bmiInfoTextView.text = "---------------Testing-----------------\nТекущий вес: \(user.first?.weight ?? 100.500)"
-        //---------------
-        
-        weightTextField.delegate = self
-        heightTextField.delegate = self
-        lineChart.delegate = self
+    override func viewWillLayoutSubviews() {
         lineChart.frame = CGRect (x: 0,
                                   y: 0,
-                                  width: chartView.frame.size.height,
+                                  width: chartView.frame.size.width,
                                   height: self.chartView.frame.size.height)
         chartView.addSubview(lineChart)
         setDataForChart()
         customizeLineChart()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        weightTextField.delegate = self
+        heightTextField.delegate = self
+        lineChart.delegate = self
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+        
+        setBMIhelpInfo()
+        setThemeMode()
+        loadUserProfile()
     }
     
+    // MARK: - IBActions
     @IBAction func updWeightButtonPressed(_ sender: Any) {
-        showAlert(with: user.first)
+        guard let person = user?.first, user?.first?.weightHistory != nil else { return }
+        showAlertUpdater(with: person) {
+        }
+    
     }
     
     @IBAction func calculateButtonTapped(_ sender: Any) {
-        resultValueLabel.text = ""
         didTapDone()
         getBmiResult()
     }
@@ -66,60 +70,47 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         view.endEditing(true)
     }
     
-    private func setWeightButton() {
-        updateWeightButton.layer.cornerRadius = 15
-        updateWeightButton.titleLabel?.font = UIFont(name: "GillSans-Italic", size: 23)
-        
+    // MARK: - Methods
+    private func loadUserProfile() {
+        if !UserDefaults.standard.bool(forKey: "ProfileDone") {
+            showAlertCreator()
+        } else {
+            user = StorageManager.shared.realm.objects(Profile.self)
+            setDataForChart()
+        }
     }
     
     private func setDataForChart() {
+        guard user?.first?.weightHistory != nil else { return }
         let set = getUserDataSet()
-        set.setColor(.white)
-        set.circleHoleColor = .red
+        set.setColor(#colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1))
+        set.circleHoleColor = .white
         set.setCircleColor(.lightGray)
         
         let data = LineChartData(dataSet: set)
         lineChart.data = data
     }
     
-    private func getUserDataSet() -> LineChartDataSet { // Testing
+    private func getUserDataSet() -> LineChartDataSet {
+        let person = user?.first
         var entries = [ChartDataEntry] ()
         var day = 1
-        for weight in user.first!.weightHistory {
-                    let weightY = weight
-                    day += 1
-                    let dateX = Double(day)
-                    entries.append(ChartDataEntry(x: dateX, y: weightY))
-                }
-        entries.append(ChartDataEntry(x: Double(day + 1) , y: user.first!.weight))
-                let secondSet = LineChartDataSet(entries: entries, label: "Test values")
-                return secondSet
-    }
-    
-    private func getTestDataSet() -> LineChartDataSet  { //Testing
-        let set = LineChartDataSet(entries: [
-            ChartDataEntry(x: 1 , y: 65),
-            ChartDataEntry(x: 2 , y: 63.8),
-            ChartDataEntry(x: 3 , y: 63.3),
-            ChartDataEntry(x: 4 , y: 64.1),
-            ChartDataEntry(x: 5 , y: 63.6),
-            ChartDataEntry(x: 6 , y: 62.9),
-            ChartDataEntry(x: 7 , y: 63.5),
-            ChartDataEntry(x: 10 , y: 64.1),
-            ChartDataEntry(x: 11 , y: 64.7),
-            ChartDataEntry(x: 13 , y: 65.3),
-            ChartDataEntry(x: 15 , y: 65.0),
-            ChartDataEntry(x: 17 , y: 65.9),
-            ChartDataEntry(x: 20 , y: 65.7)
-        ])
+        for weight in person!.weightHistory {
+            let weightY = weight
+            day += 1
+            let dateX = Double(day)
+            entries.append(ChartDataEntry(x: dateX, y: weightY))
+        }
+        entries.append(ChartDataEntry(x: Double(day + 1) , y: person!.weight))
+        let set = LineChartDataSet(entries: entries, label: "Test values")
         return set
     }
     
     private func customizeLineChart() {
-        lineChart.noDataText = "Добавьте данные о весе"
+        lineChart.noDataText = "Отсутсвуют показания веса"
         lineChart.backgroundColor = .darkGray
         lineChart.rightAxis.enabled = false
-        lineChart.animate(xAxisDuration: 2)
+        lineChart.animate(xAxisDuration: 0.5)
         
         lineChart.xAxis.labelPosition = .bottom
         lineChart.xAxis.labelTextColor = .lightGray
@@ -141,7 +132,7 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         result = round(result * 100) / 100.0
         
         guard result > 15 && result < 70 else {
-            return showAlert(title: "Wrong format!", message: "Please enter correct value")
+            return showErrorAlert()
         }
         
         resultValueLabel.text = "Ваш BMI: \(result)"
@@ -169,18 +160,13 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
     }
     
     private func setBMIhelpInfo() {
+        resultValueLabel.text = ""
         bmiInfoTextView.text = dataManager.bmiInfo
         bmiCategoriesLabel.text = dataManager.bmiCategories
     }
     
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true)
-    }
-    
 }
+// MARK: - Keyboard Extension
 extension BodyMassIndexVC: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -214,7 +200,7 @@ extension BodyMassIndexVC: UITextFieldDelegate {
         keyboardToolbar.sizeToFit()
         
         let doneButton = UIBarButtonItem(
-            title:"Done",
+            title:"Готово",
             style: .done,
             target: self,
             action: #selector(didTapDone)
@@ -231,17 +217,53 @@ extension BodyMassIndexVC: UITextFieldDelegate {
     
 }
 
+// MARK: - Alert Extensions
 extension BodyMassIndexVC {
-    private func showAlert(with profile: Profile? = nil, completion: (() -> Void)? = nil) {
-        let title = "enter weight"
+    
+    private func showAlertUpdater(with profile: Profile? = nil, completion: (() -> Void)? = nil) {
+        guard let person = user?.first, user?.first?.weightHistory != nil else { return }
+
+        let title = "Обновление данных"
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Укажите текущий вес")
         
-        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Укажите ...")
-        
-        alert.action(with: user.first) { newValue in
-            let newWeight = Double(newValue)!
-            StorageManager.shared.updateWeight(user: profile!, newWeight: newWeight)
+        alert.action(with: person) { newValue in
+            guard let newWeight = Double(newValue) else {
+                return self.showErrorAlert()
+            }
+            StorageManager.shared.updateWeight(user: person, newWeight: newWeight)
+            self.setDataForChart()
         }
         
+        present(alert, animated: true)
+    }
+    
+    private func showAlertCreator() {
+        let title = "Для построения графика и учета веса"
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Введите показатели")
+        
+        alert.actionCreate { h, w in
+            guard h != "", w != "" else {
+                return self.showAlertCreator()
+            }
+            guard let height = Double(h), let weight = Double(w) else {
+                return self.showAlertCreator()
+            }
+            DataManager.shared.createTest(weight: weight, height: height) {
+                self.user = StorageManager.shared.realm.objects(Profile.self)
+                self.setDataForChart()
+            }
+        }
+        
+        present(alert, animated: true)
+    }
+    
+    private func showErrorAlert() {
+        let title = "Не корректный формат"
+        let message = "Попробуйте еще раз"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
         present(alert, animated: true)
     }
     

@@ -103,7 +103,7 @@ class DetailTaskVC: UIViewController {
         
         let alert = UIAlertController(title: "Saved successfully", message: "You can find it at results-screen", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
-            // nothing
+            // do nothing
         }))
         self.present(alert, animated: true, completion: nil)
         
