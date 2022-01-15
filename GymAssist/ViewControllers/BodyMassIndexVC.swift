@@ -8,6 +8,7 @@
 import UIKit
 import Charts
 import RealmSwift
+import SwiftUI
 
 class BodyMassIndexVC: UIViewController, ChartViewDelegate {
     // MARK: - IBOuthlets
@@ -80,17 +81,6 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         }
     }
     
-    private func setDataForChart() {
-        guard user?.first?.weightHistory != nil else { return }
-        let set = getUserDataSet()
-        set.setColor(#colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1))
-        set.circleHoleColor = .white
-        set.setCircleColor(.lightGray)
-        
-        let data = LineChartData(dataSet: set)
-        lineChart.data = data
-    }
-    
     private func getUserDataSet() -> LineChartDataSet {
         let person = user?.first
         var entries = [ChartDataEntry] ()
@@ -102,18 +92,36 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
             entries.append(ChartDataEntry(x: dateX, y: weightY))
         }
         entries.append(ChartDataEntry(x: Double(day + 1) , y: person!.weight))
-        let set = LineChartDataSet(entries: entries, label: "Test values")
+        let set = LineChartDataSet(entries: entries, label: "Прогресс")
         return set
     }
     
+    private func setDataForChart() {
+        guard user?.first?.weightHistory != nil else { return }
+        let set = getUserDataSet()
+        set.setColor(#colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1))
+        set.lineWidth = 5
+        set.setCircleColor(.lightGray)
+        set.circleHoleColor = .red
+        set.mode = .cubicBezier
+        set.drawFilledEnabled = true
+        set.fill = Fill(color: .lightGray)
+        set.fillAlpha = 0.5
+        set.valueTextColor = .red
+        
+        let data = LineChartData(dataSet: set)
+        lineChart.data = data
+    }
+    
     private func customizeLineChart() {
-        lineChart.noDataText = "Отсутсвуют показания веса"
-        lineChart.backgroundColor = .darkGray
+        lineChart.noDataText = "Показания веса отсутсвуют"
         lineChart.rightAxis.enabled = false
+        lineChart.backgroundColor = .darkGray
         lineChart.animate(xAxisDuration: 0.5)
         
+        
         lineChart.xAxis.labelPosition = .bottom
-        lineChart.xAxis.labelTextColor = .lightGray
+        lineChart.xAxis.labelTextColor = .darkGray
         lineChart.xAxis.axisLineColor = .red
         
         let yAxis = lineChart.leftAxis
