@@ -61,7 +61,7 @@ class HighscoresTVC: UITableViewController {
         let highscore = taskLists[indexPath.section].userHighscores[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-            StorageManager.shared.delete(highscore: highscore)
+            StorageManager.shared.deleteFromRealm(type: highscore)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         

@@ -103,7 +103,7 @@ class DetailTaskVC: UIViewController {
         
         let alert = UIAlertController(title: "Saved successfully", message: "You can find it at results-screen", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
-            // nothing
+            // do nothing
         }))
         self.present(alert, animated: true, completion: nil)
         
@@ -406,6 +406,6 @@ extension DetailTaskVC {
     private func saveHighscore(withTime timeResult: String) {
         let result = Highscore()
         result.totalTime = timeResult
-        StorageManager.shared.save(highscore: result, in: currentTaskList)
+        StorageManager.shared.saveInTaskList(type: result, taskList: currentTaskList)
     }
 }

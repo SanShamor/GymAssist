@@ -54,7 +54,7 @@ class TaskListTVC: UITableViewController {
         let taskList = taskLists[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-            StorageManager.shared.delete(taskList: taskList)
+            StorageManager.shared.deleteFromRealm(type: taskList)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
@@ -108,7 +108,7 @@ extension TaskListTVC {
         
         alert.action(with: taskList) { newValue in
             if let taskList = taskList, let completion = completion {
-                StorageManager.shared.edit(taskList: taskList, newValue: newValue)
+                StorageManager.shared.edit(type: taskList, name: newValue, note: "")
                 completion()
             } else {
                 self.save(taskList: newValue)
@@ -120,7 +120,7 @@ extension TaskListTVC {
     
     private func save(taskList: String) {
         let taskList = TaskList(value: [taskList])
-        StorageManager.shared.save(taskList: taskList)
+        StorageManager.shared.saveInRealm(type: taskList)
         let rowIndex = IndexPath(row: taskLists.count - 1, section: 0)
         tableView.insertRows(at: [rowIndex], with: .automatic)
     }

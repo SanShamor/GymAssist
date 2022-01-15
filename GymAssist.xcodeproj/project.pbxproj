@@ -21,6 +21,7 @@
 		369085DA26F1366800ED877E /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085D926F1366800ED877E /* TaskList.swift */; };
 		369085DC26F1397000ED877E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369085DB26F1397000ED877E /* StorageManager.swift */; };
 		3697932C27062DB200831816 /* HighscoresTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3697932B27062DB200831816 /* HighscoresTVC.swift */; };
+		36AD5F00278E0A4A0044AD73 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5EFF278E0A4A0044AD73 /* UserProfile.swift */; };
 		36B89286276B72F800E812E0 /* iconLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 36B89285276B72F800E812E0 /* iconLogo.png */; };
 		36C30B0B2766800100BB0307 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C30B0A2766800100BB0307 /* ExerciseCell.swift */; };
 		36D979E22703A7970040774E /* BodyMassIndexVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D979E12703A7970040774E /* BodyMassIndexVC.swift */; };
@@ -45,6 +46,7 @@
 		369085D926F1366800ED877E /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		369085DB26F1397000ED877E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		3697932B27062DB200831816 /* HighscoresTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresTVC.swift; sourceTree = "<group>"; };
+		36AD5EFF278E0A4A0044AD73 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		36B89285276B72F800E812E0 /* iconLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconLogo.png; path = "../../../../GymAssist Materials/iconLogo.png"; sourceTree = "<group>"; };
 		36C30B0A2766800100BB0307 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		36D979E12703A7970040774E /* BodyMassIndexVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMassIndexVC.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				369085D926F1366800ED877E /* TaskList.swift */,
+				36AD5EFF278E0A4A0044AD73 /* UserProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			files = (
 				3666387C2767C1F20052E71B /* TaskListCell.swift in Sources */,
 				369085DA26F1366800ED877E /* TaskList.swift in Sources */,
+				36AD5F00278E0A4A0044AD73 /* UserProfile.swift in Sources */,
 				3611079126F3D12200EC9E91 /* DataManager.swift in Sources */,
 				3639654E26F10D2900F6A86D /* AppDelegate.swift in Sources */,
 				36C30B0B2766800100BB0307 /* ExerciseCell.swift in Sources */,
