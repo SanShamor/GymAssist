@@ -604,9 +604,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWa-Fb-TZp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1397" y="-21"/>
+            <point key="canvasLocation" x="-106" y="-75"/>
         </scene>
-        <!--HighscoresTVC-->
+        <!--Item-->
         <scene sceneID="06W-AA-PMI">
             <objects>
                 <tableViewController id="YSa-Nk-TP6" customClass="HighscoresTVC" customModule="GymAssist" customModuleProvider="target" sceneMemberID="viewController">
@@ -645,16 +645,20 @@
                             <outlet property="delegate" destination="YSa-Nk-TP6" id="67m-gB-iFu"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" image="clock.badge.checkmark" catalog="system" id="0Cv-GX-ZdD"/>
                     <navigationItem key="navigationItem" id="WAy-UO-NoI"/>
+                    <connections>
+                        <outlet property="highScoreTabItem" destination="0Cv-GX-ZdD" id="FqL-Us-2sk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4D4-I0-ebL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="654"/>
+            <point key="canvasLocation" x="-123" y="755"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="P6e-SD-WXJ">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RB5-Jc-RXI" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RB5-Jc-RXI" customClass="CustomTabBarController" customModule="GymAssist" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cmI-eo-xgs"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WQv-Wx-vJH">
@@ -664,38 +668,20 @@
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" red="1" green="0.17453843359999999" blue="0.17520993949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="initialIndex">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="dL8-7e-1aw" kind="relationship" relationship="viewControllers" id="LnR-fh-fg2"/>
                         <segue destination="Xks-me-yQU" kind="relationship" relationship="viewControllers" id="iXp-uK-MVA"/>
-                        <segue destination="nAz-uh-VB2" kind="relationship" relationship="viewControllers" id="6b7-K9-5Ja"/>
+                        <segue destination="YSa-Nk-TP6" kind="relationship" relationship="viewControllers" id="leC-BE-wLl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bj1-jj-n74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-903" y="-75"/>
-        </scene>
-        <!--Результаты-->
-        <scene sceneID="Pa1-kJ-rgD">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nAz-uh-VB2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Результаты" image="clock.badge.checkmark" catalog="system" id="cdd-cm-cVy"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="dOK-9X-pEt">
-                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.91876316069999997" green="0.2682834268" blue="0.2274060547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" red="0.6738529795" green="0.6738529795" blue="0.6738529795" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="YSa-Nk-TP6" kind="relationship" relationship="rootViewController" id="XEm-km-Adk"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kku-Eq-sBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-123" y="654"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.9222512786" green="0.5376990452" blue="0.001868483321" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

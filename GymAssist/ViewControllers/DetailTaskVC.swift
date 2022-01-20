@@ -100,7 +100,7 @@ class DetailTaskVC: UIViewController {
         let time = getTimerResultValue()
         saveHighscore(withTime: time)
         saveResultButton.isHidden = true
-        
+        setBarItem()
         let alert = UIAlertController(title: "Saved successfully", message: "You can find it at results-screen", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
             // do nothing
@@ -300,6 +300,13 @@ class DetailTaskVC: UIViewController {
         startStopTimerButton.setTitleColor(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), for: .normal)
         startStopTimerButton.backgroundColor = #colorLiteral(red: 0.1900779605, green: 0.5983788371, blue: 0.4619213343, alpha: 1)
         resetTimerButton.backgroundColor = #colorLiteral(red: 0.9988579154, green: 0.1766675115, blue: 0.1742589176, alpha: 1)
+    }
+    
+    private func setBarItem() {
+        let tabBar = self.tabBarController!.tabBar
+        let highscoreItem = tabBar.items![2]
+        highscoreItem.badgeColor = UIColor.red
+        highscoreItem.badgeValue = "!"
     }
     
     // MARK: Methods

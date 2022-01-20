@@ -8,7 +8,6 @@
 import UIKit
 import Charts
 import RealmSwift
-import SwiftUI
 
 class BodyMassIndexVC: UIViewController, ChartViewDelegate {
     // MARK: - IBOuthlets
@@ -29,16 +28,6 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
     private var weightValue: Double = 1.0
     private var heightValue: Double = 1.0
     
-    override func viewWillLayoutSubviews() {
-        lineChart.frame = CGRect (x: 0,
-                                  y: 0,
-                                  width: chartView.frame.size.width,
-                                  height: self.chartView.frame.size.height)
-        chartView.addSubview(lineChart)
-        setDataForChart()
-        customizeLineChart()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,11 +38,22 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         
+        lineChart.frame = CGRect (x: 0,
+                                  y: 0,
+                                  width: chartView.frame.size.width,
+                                  height: self.chartView.frame.size.height)
+        chartView.addSubview(lineChart)
+        
         setBMIhelpInfo()
         setThemeMode()
         loadUserProfile()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        setDataForChart()
+        customizeLineChart()
+    }
+         
     // MARK: - IBActions
     @IBAction func updWeightButtonPressed(_ sender: Any) {
         guard let person = user?.first, user?.first?.weightHistory != nil else { return }
@@ -119,17 +119,19 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
         lineChart.backgroundColor = .darkGray
         lineChart.animate(xAxisDuration: 0.5)
         
-        
         lineChart.xAxis.labelPosition = .bottom
         lineChart.xAxis.labelTextColor = .darkGray
         lineChart.xAxis.axisLineColor = .red
+        lineChart.xAxis.axisLineWidth = 3
+        lineChart.xAxis.setLabelCount(0, force: true)
         
         let yAxis = lineChart.leftAxis
-        yAxis.labelFont = .boldSystemFont(ofSize: 12)
+        yAxis.labelPosition = .outsideChart
+        yAxis.labelFont = .boldSystemFont(ofSize: 16)
         yAxis.setLabelCount(5, force: false)
         yAxis.labelTextColor = .lightGray
         yAxis.axisLineColor = .red
-        yAxis.labelPosition = .outsideChart
+        yAxis.axisLineWidth = 3
     }
     
     private func getBmiResult() {

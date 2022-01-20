@@ -9,8 +9,9 @@ import RealmSwift
 
 class HighscoresTVC: UITableViewController {
     
+    @IBOutlet weak var highScoreTabItem: UITabBarItem!
+    
     var taskLists: Results<TaskList>!
-    typealias Animation = (UITableViewCell, IndexPath, UITableView) -> Void
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,10 @@ class HighscoresTVC: UITableViewController {
         title = "Мои результаты"
         taskLists = StorageManager.shared.realm.objects(TaskList.self)
         navigationItem.rightBarButtonItems = [editButtonItem]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        highScoreTabItem.badgeValue = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {

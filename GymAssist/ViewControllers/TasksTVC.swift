@@ -49,10 +49,12 @@ class TasksTVC: UITableViewController {
         
         let task = taskList.tasks[indexPath.row]
         
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-            //StorageManager.shared.delete(task: task)
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [self] _, _, _ in
             StorageManager.shared.deleteFromRealm(type: task)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            if self.taskList.tasks.isEmpty {
+                tableView.tableFooterView?.isHidden = true
+            }
         }
         
         let editAction = UIContextualAction(style: .normal, title: "Edit") { _, _, isDone in
@@ -109,23 +111,25 @@ class TasksTVC: UITableViewController {
     }
     
     private func setCustomFooter() {
-        let superViewWidth = view.frame.size.width
-        let footer = UIView(frame: CGRect(x: 0,
-                                          y: 0,
-                                          width: superViewWidth,
-                                          height: superViewWidth / 5 ))
-        let button = UIButton(frame: CGRect(x: superViewWidth / 4,
-                                            y: 0,
-                                            width: superViewWidth / 2,
-                                            height: footer.frame.height))
-        button.addTarget(self, action: #selector(goToDetailScreen), for: .touchUpInside)
-        button.setTitle("Let's start to ROCK!", for: .normal)
-        button.layer.cornerRadius = 15
-        button.backgroundColor = #colorLiteral(red: 0.1890899241, green: 0.6003474593, blue: 0.4615892172, alpha: 1)
-        footer.backgroundColor = #colorLiteral(red: 0.1677677035, green: 0.1727086902, blue: 0.1726246774, alpha: 1)
-        footer.addSubview(button)
-        
-        tableView.tableFooterView = footer
+        if !taskList.tasks.isEmpty {
+            let superViewWidth = view.frame.size.width
+            let footer = UIView(frame: CGRect(x: 0,
+                                              y: 0,
+                                              width: superViewWidth,
+                                              height: superViewWidth / 5 ))
+            let button = UIButton(frame: CGRect(x: superViewWidth / 4,
+                                                y: 0,
+                                                width: superViewWidth / 2,
+                                                height: footer.frame.height))
+            button.addTarget(self, action: #selector(goToDetailScreen), for: .touchUpInside)
+            button.setTitle("Let's start to ROCK!", for: .normal)
+            button.layer.cornerRadius = 15
+            button.backgroundColor = #colorLiteral(red: 0.1890899241, green: 0.6003474593, blue: 0.4615892172, alpha: 1)
+            footer.backgroundColor = #colorLiteral(red: 0.1677677035, green: 0.1727086902, blue: 0.1726246774, alpha: 1)
+            footer.addSubview(button)
+            
+            tableView.tableFooterView = footer
+        }
     }
     
 }
@@ -143,6 +147,7 @@ extension TasksTVC {
                 completion()
             } else {
                 self.saveTask(withName: newValue, andNote: note)
+                self.setCustomFooter()
             }
         }
         
