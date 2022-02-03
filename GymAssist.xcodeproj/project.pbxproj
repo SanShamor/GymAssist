@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3611079126F3D12200EC9E91 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611079026F3D12200EC9E91 /* DataManager.swift */; };
+		3612D07D27AC40ED00A14A33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3612D07F27AC40ED00A14A33 /* Localizable.strings */; };
 		361967F326F7A17F000F90A2 /* DetailTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361967F226F7A17F000F90A2 /* DetailTaskVC.swift */; };
 		3639654E26F10D2900F6A86D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639654D26F10D2900F6A86D /* AppDelegate.swift */; };
 		3639655026F10D2900F6A86D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639654F26F10D2900F6A86D /* SceneDelegate.swift */; };
@@ -32,6 +33,9 @@
 /* Begin PBXFileReference section */
 		2B7430C14FE123BD9284F923 /* Pods-GymAssist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymAssist.release.xcconfig"; path = "Target Support Files/Pods-GymAssist/Pods-GymAssist.release.xcconfig"; sourceTree = "<group>"; };
 		3611079026F3D12200EC9E91 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3612D07927ABF4C800A14A33 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		3612D07E27AC40ED00A14A33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3612D08027AC40F200A14A33 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		361967F226F7A17F000F90A2 /* DetailTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskVC.swift; sourceTree = "<group>"; };
 		3639654A26F10D2900F6A86D /* GymAssist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymAssist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3639654D26F10D2900F6A86D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				3639654F26F10D2900F6A86D /* SceneDelegate.swift */,
 				3639655B26F10D2B00F6A86D /* Info.plist */,
 				36B89285276B72F800E812E0 /* iconLogo.png */,
+				3612D07F27AC40ED00A14A33 /* Localizable.strings */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 3639654126F10D2900F6A86D;
 			productRefGroup = 3639654B26F10D2900F6A86D /* Products */;
@@ -245,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3612D07D27AC40ED00A14A33 /* Localizable.strings in Resources */,
 				3639655A26F10D2B00F6A86D /* LaunchScreen.storyboard in Resources */,
 				36B89286276B72F800E812E0 /* iconLogo.png in Resources */,
 				3639655726F10D2B00F6A86D /* Assets.xcassets in Resources */,
@@ -322,10 +329,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		3612D07F27AC40ED00A14A33 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3612D07E27AC40ED00A14A33 /* en */,
+				3612D08027AC40F200A14A33 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		3639655326F10D2900F6A86D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3639655426F10D2900F6A86D /* Base */,
+				3612D07927ABF4C800A14A33 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -345,6 +362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -406,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

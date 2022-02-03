@@ -16,7 +16,7 @@ class HighscoresTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Мои результаты"
+        title = "highscores:title".localized()
         taskLists = StorageManager.shared.realm.objects(TaskList.self)
         navigationItem.rightBarButtonItems = [editButtonItem]
     }
@@ -65,7 +65,7 @@ class HighscoresTVC: UITableViewController {
         
         let highscore = taskLists[indexPath.section].userHighscores[indexPath.row]
         
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+        let deleteAction = UIContextualAction(style: .destructive, title: "highscores:del".localized()) { _, _, _ in
             StorageManager.shared.deleteFromRealm(type: highscore)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }

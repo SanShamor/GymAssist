@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  GymAssist
+
+  Created by Александр on 03.02.2022.
+  
+*/
+
+"alert.del" = "Delete";
+"alert.edit" = "Edit";
+
+"TaskList:alert.1" = "Изменить программу";
+"TaskList:alert.2" = "Новая программа";
+"TaskList:alert.3" = "Укажите название тренировки";
+
+"Tasks:start" = "Давай начнем качаться!";
+"Tasks:alert.1" = "Изменение задачи";
+"Tasks:alert.2" = "Новое упражнение";
+"Task:alert.message" = "Введите данные";
+
+"Detail:alert.saved" = "Успешно сохранено";
+"Detail:alert.text" = "Посмотрите в странице результатов";
+"Detail:alert.reset" = "Сбросить таймер";
+"Detail:alert.sure" = "Вы уверены?";
+
+"BMI:chart.progress" = "Прогресс";
+"BMI:chart.noData" = "Показания отсутствуют";
+"BMI:doneButton.ready" = "Готово";
+"BMI:alert.upd" = "Обновление данных";
+"BMI:alert.weight" = "Укажите текущий вес";
+"BMI:alert.charts" = "Для построения графика";
+"BMI:alert.Progress" = "Прогресс";
+"BMI:alert.wrongFormat" = "Некорректный формат";
+"BMI:alert.tryAgain" = "Попробуйте еще раз";
+
+"highscores:title" = "Мои результаты";
+"highscores:del" = "Удалить";
+
+"alretExt:db.save" = "Coхранить";
+"alretExt:db.upd" = "Обновить";
+"alretExt:cancelButton" = "Назад";
+"alretExt:1.text" = "Название";
+"alretExt:2.textFirst" = "Название упражнения";
+"alretExt:2.textSecond" = "Вес / Колличество повторений";
+"alretExt:3.textFirst" = "Рост (см)";
+"alretExt:3.textSecond" = "Вес (кг)";
+
+"DataManager:training1.name" = "Разминка";
+"DataManager:training2.name" = "Силовая тренировка";
+"DataManager:1-1" = "Вращения головой";
+"DataManager:1-2" = "Вращения локтями";
+"DataManager:1-3" = "Махи руками";
+"DataManager:1-4" = "Вращение тазом";
+"DataManager:1-5" = "Наклоны к ногам";
+"DataManager:1-6" = "Махи ногами";
+"DataManager:1-7" = "Боковые выпады";
+"DataManager:2-1" = "Жим штанги";
+"DataManager:2-2" = "Подтягивания";
+"DataManager:2-3" = "Махи гирей";
+"DataManager:2-4" = "Гантели-трицепс";
+"DataManager:2-5" = "Обр.хват-трицепс";
+
+"DataManager:BMI.info" = "Индекс массы тела (BMI) — величина, позволяющая оценить степень соответствия массы человека и его роста и тем самым косвенно судить о том, является ли масса недостаточной, нормальной или избыточной.
+        ИМТ важен при определении показаний для лечения";
+

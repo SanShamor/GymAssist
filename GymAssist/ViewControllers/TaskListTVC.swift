@@ -53,12 +53,12 @@ class TaskListTVC: UITableViewController {
         
         let taskList = taskLists[indexPath.row]
         
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+        let deleteAction = UIContextualAction(style: .destructive, title: "alert.del".localized() ) { _, _, _ in
             StorageManager.shared.deleteFromRealm(type: taskList)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
-        let editAction = UIContextualAction(style: .normal, title: "Edit") { _, _, isDone in
+        let editAction = UIContextualAction(style: .normal, title: "alert.edit".localized() ) { _, _, isDone in
             self.showAlert(with: taskList) {
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
@@ -102,9 +102,9 @@ class TaskListTVC: UITableViewController {
 extension TaskListTVC {
     
     private func showAlert(with taskList: TaskList? = nil, completion: (() -> Void)? = nil) {
-        let title = taskList != nil ? "Изменить программу" : "Новая программа"
+        let title = taskList != nil ? "TaskList:alert.1".localized() : "TaskList:alert.2".localized()
         
-        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Укажите название тренировки")
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "TaskList:alert.3".localized() )
         
         alert.action(with: taskList) { newValue in
             if let taskList = taskList, let completion = completion {

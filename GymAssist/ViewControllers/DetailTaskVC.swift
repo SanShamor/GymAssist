@@ -101,7 +101,9 @@ class DetailTaskVC: UIViewController {
         saveHighscore(withTime: time)
         saveResultButton.isHidden = true
         setBarItem()
-        let alert = UIAlertController(title: "Saved successfully", message: "You can find it at results-screen", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Detail:alert.saved".localized(),
+                                      message: "Detail:alert.text".localized(),
+                                      preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
             // do nothing
         }))
@@ -111,7 +113,9 @@ class DetailTaskVC: UIViewController {
     
     @IBAction func resetButtonTapped(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Reset timer?", message: "Are you sure?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Detail:alert.reset".localized(),
+                                      message: "Detail:alert.sure".localized(),
+                                      preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (_) in
             self.setStopTime(date: nil)
             self.setStartTime(date: nil)
@@ -388,7 +392,7 @@ class DetailTaskVC: UIViewController {
         previousExerciseButton.isHidden = true
         exerciseNameLabel.text = (exerciseNames[exercisePositionInList])
         exerciseDescriptionTextView.text = (exerciseDescription[exercisePositionInList])
-        userScoreLabel.text = "Закончено раундов: \(String(finishedRounds))/\(roundsCount)"
+        userScoreLabel.text = "Rounds: \(String(finishedRounds))/\(roundsCount)"
     }
     
     private func finishWorkout() {

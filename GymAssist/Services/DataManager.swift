@@ -13,10 +13,7 @@ class DataManager {
     
     private init() {}
     
-    let bmiInfo = """
-        Индекс массы тела (BMI) — величина, позволяющая оценить степень соответствия массы человека и его роста и тем самым косвенно судить о том, является ли масса недостаточной, нормальной или избыточной.
-        ИМТ важен при определении показаний для лечения.
-        """
+    let bmiInfo = "DataManager:BMI.info".localized()
     
     let bmiCategories = """
          BMI           Соответствие
@@ -47,35 +44,30 @@ class DataManager {
                 UserDefaults.standard.set(true, forKey: "done")
                 
                 let cardioTraining = TaskList()
-                cardioTraining.name = "Разминка"
-                let headRotation = Task(value: ["name": "Вращения головой", "note": "10х"])
-                let shoulders = Task(value: ["name": "Вращения локтями", "note": "12х"])
-                let handsUp = Task(value: ["name": "Махи руками", "note": "12х"])
-                let hipJoint = Task(value: ["name": "Вращение тазом", "note": "30 секунд"])
-                let bendsToLegs = Task(value: ["name": "Наклоны к ногам", "note": "7х к каждой ноге"])
-                let swingLegs = Task(value: ["name": "Махи ногами", "note": "12х"])
-                let sideLunges = Task(value: ["name": "Боковые выпады", "note": "12х"])
+                cardioTraining.name = "DataManager:training1.name".localized()
+                let headRotation = Task(value: ["name": "DataManager:1-1".localized(), "note": "10х"])
+                let shoulders = Task(value: ["name": "DataManager:1-2".localized(), "note": "12х"])
+                let handsUp = Task(value: ["name": "DataManager:1-3".localized(), "note": "12х"])
+                let hipJoint = Task(value: ["name": "DataManager:1-4".localized(), "note": "30 sec"])
+                let bendsToLegs = Task(value: ["name": "DataManager:1-5".localized(), "note": "7х"])
+                let swingLegs = Task(value: ["name": "DataManager:1-6".localized(), "note": "12х"])
+                let sideLunges = Task(value: ["name": "DataManager:1-7".localized(), "note": "12х"])
                 
                 
                 let strengthTraining = TaskList()
-                strengthTraining.name = "Силовая тренировка"
-                let barbellBench = Task(value: ["name": "Жим штанги", "note": "5кг + 5кг\n12х"])
-                let pullUp = Task(value: ["name": "Подтягивания", "note": "10х"])
-                let swingKettlebell = Task(value: ["name": "Махи гирей", "note": "35кг\n12х"])
-                let kickBacks = Task(value: ["name": "Гантели-трицепс", "note": "6кг в руку\n12х"])
-                let extensionTwists = Task(value: ["name": "Обр.хват-трицепс", "note": "6кг\n12х"])
+                strengthTraining.name = "DataManager:training2.name".localized()
+                let barbellBench = Task(value: ["name": "DataManager:2-1".localized(), "note": "5kg + 5kg\n12х"])
+                let pullUp = Task(value: ["name": "DataManager:2-2".localized(), "note": "10х"])
+                let swingKettlebell = Task(value: ["name": "DataManager:2-3".localized(), "note": "35kg\n12х"])
+                let kickBacks = Task(value: ["name": "DataManager:2-4".localized(), "note": "6kg \n12х"])
+                let extensionTwists = Task(value: ["name": "DataManager:2-5".localized(), "note": "6kg\n12х"])
                 
                 cardioTraining.tasks.insert(contentsOf: [headRotation, shoulders, handsUp, hipJoint, bendsToLegs, swingLegs, sideLunges], at: 0)
                 strengthTraining.tasks.insert(contentsOf: [barbellBench, pullUp, swingKettlebell, kickBacks, extensionTwists], at: 0)
                 
-                //let userProfileTest = Profile()
-                //userProfileTest.weight = 0
-                //userProfileTest.height = 0
-                
                 DispatchQueue.main.async {
                     StorageManager.shared.saveInRealm(type: cardioTraining)
                     StorageManager.shared.saveInRealm(type: strengthTraining)
-                    //StorageManager.shared.saveInRealm(type: userProfileTest)
                     completion()
                 }
             }

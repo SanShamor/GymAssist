@@ -92,7 +92,7 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
             entries.append(ChartDataEntry(x: dateX, y: weightY))
         }
         entries.append(ChartDataEntry(x: Double(day + 1) , y: person!.weight))
-        let set = LineChartDataSet(entries: entries, label: "Прогресс")
+        let set = LineChartDataSet(entries: entries, label: "BMI:chart.progress".localized() )
         return set
     }
     
@@ -114,7 +114,7 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
     }
     
     private func customizeLineChart() {
-        lineChart.noDataText = "Показания веса отсутсвуют"
+        lineChart.noDataText = "BMI:chart.noData".localized()
         lineChart.rightAxis.enabled = false
         lineChart.backgroundColor = .darkGray
         lineChart.animate(xAxisDuration: 0.5)
@@ -145,7 +145,7 @@ class BodyMassIndexVC: UIViewController, ChartViewDelegate {
             return showErrorAlert()
         }
         
-        resultValueLabel.text = "Ваш BMI: \(result)"
+        resultValueLabel.text = "BMI: \(result)"
         if result > 18 && result < 25 {
             resultValueLabel.textColor = .green
         } else {
@@ -210,7 +210,7 @@ extension BodyMassIndexVC: UITextFieldDelegate {
         keyboardToolbar.sizeToFit()
         
         let doneButton = UIBarButtonItem(
-            title:"Готово",
+            title:"BMI:doneButton.ready".localized(),
             style: .done,
             target: self,
             action: #selector(didTapDone)
@@ -233,8 +233,8 @@ extension BodyMassIndexVC {
     private func showAlertUpdater(with profile: Profile? = nil, completion: (() -> Void)? = nil) {
         guard let person = user?.first, user?.first?.weightHistory != nil else { return }
 
-        let title = "Обновление данных"
-        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Укажите текущий вес")
+        let title = "BMI:alert.upd".localized()
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "BMI:alert.weight".localized() )
         
         alert.action(with: person) { newValue in
             guard let newWeight = Double(newValue) else {
@@ -248,8 +248,8 @@ extension BodyMassIndexVC {
     }
     
     private func showAlertCreator() {
-        let title = "Для построения графика и учета веса"
-        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Введите показатели")
+        let title = "BMI:alert.charts".localized()
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "BMI:alert.weight".localized() )
         
         alert.actionCreate { h, w in
             guard h != "", w != "" else {
@@ -268,8 +268,8 @@ extension BodyMassIndexVC {
     }
     
     private func showErrorAlert() {
-        let title = "Не корректный формат"
-        let message = "Попробуйте еще раз"
+        let title = "BMI:alert.wrongFormat".localized()
+        let message = "BMI:alert.tryAgain".localized()
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)

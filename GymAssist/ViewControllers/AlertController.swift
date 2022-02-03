@@ -7,6 +7,12 @@
 
 import  UIKit
 
+extension String {
+    func localized(tableName: String = "Localizable") -> String {
+        return NSLocalizedString(self, tableName: tableName, value: "**\(self)**", comment: "")
+      }
+}
+
 extension UIAlertController {
     
     static func createAlert(withTitle title: String, andMessage message: String) -> UIAlertController {
@@ -14,7 +20,7 @@ extension UIAlertController {
     }
     
     func action(with taskList: TaskList?, completion: @escaping (String) -> Void) {
-        let doneButton = taskList == nil ? "Save" : "Update"
+        let doneButton = taskList == nil ? "alretExt:db.save".localized() : "alretExt:db.upd".localized()
         
         let saveAction = UIAlertAction(title: doneButton, style: .default) { _ in
             guard let newValue = self.textFields?.first?.text else { return }
@@ -22,18 +28,18 @@ extension UIAlertController {
             completion(newValue)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        let cancelAction = UIAlertAction(title: "alretExt:cancelButton".localized(), style: .destructive)
         
         addAction(saveAction)
         addAction(cancelAction)
         addTextField { textField in
-            textField.placeholder = "Название"
+            textField.placeholder = "alretExt:1.text".localized()
             textField.text = taskList?.name
         }
     }
     
     func action(with task: Task?, completion: @escaping (String, String) -> Void) {
-        let title = task == nil ? "Save" : "Update"
+        let title = task == nil ? "alretExt:db.save".localized() : "alretExt:db.upd".localized()
         
         let saveAction = UIAlertAction(title: title, style: .default) { _ in
             guard let newTask = self.textFields?.first?.text else { return }
@@ -46,23 +52,23 @@ extension UIAlertController {
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        let cancelAction = UIAlertAction(title: "alretExt:cancelButton".localized(), style: .destructive)
         
         addAction(saveAction)
         addAction(cancelAction)
         
         addTextField { textField in
-            textField.placeholder = "Название упражнения"
+            textField.placeholder = "alretExt:2.textFirst".localized()
             textField.text = task?.name
         }
         addTextField { textField in
-            textField.placeholder = "Вес / Колличество повторений"
+            textField.placeholder = "alretExt:2.textSecond".localized()
             textField.text = task?.note
         }
     }
     
     func action(with user: Profile?, completion: @escaping  (String) -> Void) {
-        let doneButton = "Обновить"
+        let doneButton = "alretExt:db.upd".localized()
         
         let saveAction = UIAlertAction(title: doneButton, style: .default) { _ in
             guard let newValue = self.textFields?.first?.text else { return }
@@ -70,18 +76,18 @@ extension UIAlertController {
             completion(newValue)
         }
         
-        let cancelAction = UIAlertAction(title: "Отмена", style: .destructive)
+        let cancelAction = UIAlertAction(title: "alretExt:cancelButton".localized(), style: .destructive)
         
         addAction(saveAction)
         addAction(cancelAction)
         addTextField { textField in
-            textField.placeholder = "Название"
+            textField.placeholder = "alretExt:1.text"
             textField.text = "\(user!.weight)"
         }
     }
     
     func actionCreate(completion: @escaping (String, String) -> Void) {
-        let doneButton = "Ладненько...всё указал"
+        let doneButton = "alretExt:db.save".localized()
         
         let saveAction = UIAlertAction(title: doneButton, style: .default) { _ in
             guard let height = self.textFields?.first?.text else { return }
@@ -91,10 +97,10 @@ extension UIAlertController {
         
         addAction(saveAction)
         addTextField { textField in
-            textField.placeholder = "Рост (см)"
+            textField.placeholder = "alretExt:3.textFirst".localized()
         }
         addTextField { textField in
-            textField.placeholder = "Вес(кг)"
+            textField.placeholder = "alretExt:3.textSecond".localized()
         }
     }
     

@@ -1,0 +1,83 @@
+
+/* Class = "UITabBarItem"; title = "Results"; ObjectID = "0Cv-GX-ZdD"; */
+"0Cv-GX-ZdD.title" = "Результаты";
+
+/* Class = "UIButton"; normalTitle = "START"; ObjectID = "0yq-xZ-gmE"; */
+"0yq-xZ-gmE.normalTitle" = "START";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "1GQ-nR-mdR"; */
+"1GQ-nR-mdR.text" = "Заголовок";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "3iF-iv-Z0p"; */
+"3iF-iv-Z0p.text" = "---Тут находится тестовый пример текста---";
+
+/* Class = "UITextField"; placeholder = "Height(SM)"; ObjectID = "8dn-XT-liZ"; */
+"8dn-XT-liZ.placeholder" = "Рост (см)";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "ClK-Ys-4ZY"; */
+"ClK-Ys-4ZY.text" = "1";
+
+/* Class = "UILabel"; text = "Рост (см):"; ObjectID = "EeH-TJ-GVM"; */
+"EeH-TJ-GVM.text" = "Рост (см):";
+
+/* Class = "UILabel"; text = "Note here"; ObjectID = "JJA-ay-AX1"; */
+"JJA-ay-AX1.text" = "---Тут будут заметки---";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "OdV-0u-LVN"; */
+"OdV-0u-LVN.text" = "Detail";
+
+/* Class = "UILabel"; text = "Вес (кг):"; ObjectID = "QGO-99-iTX"; */
+"QGO-99-iTX.text" = "Вес (кг):";
+
+/* Class = "UIButton"; configuration.title = "Update weight"; ObjectID = "Rri-qb-n6D"; */
+"Rri-qb-n6D.configuration.title" = "Обновить вес";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Rri-qb-n6D"; */
+"Rri-qb-n6D.normalTitle" = "--*--";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "V9b-v5-nu9"; */
+"V9b-v5-nu9.text" = "___";
+
+/* Class = "UITextField"; placeholder = "Weight (KG)"; ObjectID = "Vcv-7V-vEb"; */
+"Vcv-7V-vEb.placeholder" = "Вес (кг)";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Y2c-mw-dj7"; */
+"Y2c-mw-dj7.normalTitle" = "---";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aLF-fd-eBt"; */
+"aLF-fd-eBt.normalTitle" = "---";
+
+/* Class = "UITabBarItem"; title = "BMI"; ObjectID = "avf-BJ-8Eu"; */
+"avf-BJ-8Eu.title" = "BMI";
+
+/* Class = "UITabBarItem"; title = "Workouts"; ObjectID = "bsX-me-KIx"; */
+"bsX-me-KIx.title" = "Тренировки";
+
+/* Class = "UINavigationItem"; title = "Мои тренировки"; ObjectID = "gIb-d0-gNC"; */
+"gIb-d0-gNC.title" = "Мои тренировки";
+
+/* Class = "UIButton"; configuration.title = "Save result"; ObjectID = "is8-Mr-zsr"; */
+"is8-Mr-zsr.configuration.title" = "Сохранить результат";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "is8-Mr-zsr"; */
+"is8-Mr-zsr.normalTitle" = "---";
+
+/* Class = "UILabel"; text = "00 : 00 : 00"; ObjectID = "oZV-a8-WaU"; */
+"oZV-a8-WaU.text" = "00 : 00 : 00";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "uew-2s-7lQ"; */
+"uew-2s-7lQ.text" = "Detail";
+
+/* Class = "UITextView"; text = "Detail information will be here"; ObjectID = "vlD-Wr-Aif"; */
+"vlD-Wr-Aif.text" = "Detail information will be here";
+
+/* Class = "UIButton"; configuration.title = "Calculate BMI"; ObjectID = "wvn-jE-ybe"; */
+"wvn-jE-ybe.configuration.title" = "Расчитать BMI";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "wvn-jE-ybe"; */
+"wvn-jE-ybe.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "RESET"; ObjectID = "yeB-eL-ZnE"; */
+"yeB-eL-ZnE.normalTitle" = "RESET";
+
+"UfY-hQ-kiF.text" = "Для расчета введите данные";

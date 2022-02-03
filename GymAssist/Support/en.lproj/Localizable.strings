@@ -1,0 +1,63 @@
+/* 
+  Localizable.strings
+  GymAssist
+
+  Created by Александр on 03.02.2022.
+  
+*/
+
+"alert.del" = "Delete";
+"alert.edit" = "Edit";
+
+"TaskList:alert.1" = "Edit workout";
+"TaskList:alert.2" = "New workout";
+"TaskList:alert.3" = "Enter the name of the workout";
+
+"Tasks:start" = "Let's start to ROCK!";
+"Tasks:alert.1" = "Edit task";
+"Tasks:alert.2" = "New task";
+"Task:alert.message" = "Enter message data";
+
+"Detail:alert.saved" = "Saved successfully";
+"Detail:alert.text" = "You can find it at results-screen";
+"Detail:alert.reset" = "Reset timer?";
+"Detail:alert.sure" = "Are you sure?";
+
+"BMI:chart.progress" = "Results";
+"BMI:chart.noData" = "No readings";
+"BMI:doneButton.ready" = "Ready";
+"BMI:alert.upd" = "Updating data";
+"BMI:alert.weight" = "Enter current weight";
+"BMI:alert.charts" = "For build a graph";
+"BMI:alert.Progress" = "Progress";
+"BMI:alert.wrongFormat" = "Incorrect format";
+"BMI:alert.tryAgain" = "Try again";
+
+"highscores:title" = "My results";
+"highscores:del" = "Delete";
+
+"alretExt:db.save" = "Save";
+"alretExt:db.upd" = "Update";
+"alretExt:cancelButton" = "Cancel";
+"alretExt:1.text" = "Name";
+"alretExt:2.textFirst" = "Task's name";
+"alretExt:2.textSecond" = "Weight / Note";
+"alretExt:3.textFirst" = "Height (cm)";
+"alretExt:3.textSecond" = "Weight (kg)";
+
+"DataManager:training1.name" = "Warm-up";
+"DataManager:training2.name" = "Power training";
+"DataManager:1-1" = "Head rotation";
+"DataManager:1-2" = "Elbow rotations";
+"DataManager:1-3" = "Hands waving";
+"DataManager:1-4" = "Body rotation";
+"DataManager:1-5" = "Tilts to the legs";
+"DataManager:1-6" = "Legs swing";
+"DataManager:1-7" = "Side lunges";
+"DataManager:2-1" = "Barbell bench press";
+"DataManager:2-2" = "Pull-ups";
+"DataManager:2-3" = "Kettlebell swing";
+"DataManager:2-4" = "Triceps - Dumbbells";
+"DataManager:2-5" = "Reverse grip-triceps";
+
+"DataManager:BMI.info" = "Body Mass Index (BMI) is a person’s weight in kilograms divided by the square of height in meters. A high BMI can indicate high body fatness. BMI screens for weight categories that may lead to health problems, but it does not diagnose the body fatness or health of an individual";

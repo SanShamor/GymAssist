@@ -49,7 +49,7 @@ class TasksTVC: UITableViewController {
         
         let task = taskList.tasks[indexPath.row]
         
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [self] _, _, _ in
+        let deleteAction = UIContextualAction(style: .destructive, title: "alert.del".localized()) { [self] _, _, _ in
             StorageManager.shared.deleteFromRealm(type: task)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             if self.taskList.tasks.isEmpty {
@@ -57,7 +57,7 @@ class TasksTVC: UITableViewController {
             }
         }
         
-        let editAction = UIContextualAction(style: .normal, title: "Edit") { _, _, isDone in
+        let editAction = UIContextualAction(style: .normal, title: "alert.edit".localized()) { _, _, isDone in
             self.showAlert(with: task) {
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
@@ -122,7 +122,7 @@ class TasksTVC: UITableViewController {
                                                 width: superViewWidth / 2,
                                                 height: footer.frame.height))
             button.addTarget(self, action: #selector(goToDetailScreen), for: .touchUpInside)
-            button.setTitle("Let's start to ROCK!", for: .normal)
+            button.setTitle("Tasks:start".localized(), for: .normal)
             button.layer.cornerRadius = 15
             button.backgroundColor = #colorLiteral(red: 0.1890899241, green: 0.6003474593, blue: 0.4615892172, alpha: 1)
             footer.backgroundColor = #colorLiteral(red: 0.1677677035, green: 0.1727086902, blue: 0.1726246774, alpha: 1)
@@ -137,9 +137,9 @@ class TasksTVC: UITableViewController {
 extension TasksTVC {
     
     private func showAlert(with task: Task? = nil, completion: (() -> Void)? = nil) {
-        let title = task != nil ? "Изменение задачи" : "Новое упражнение"
+        let title = task != nil ? "Tasks:alert.1".localized() : "Tasks:alert.1".localized()
         
-        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Введите данные")
+        let alert = UIAlertController.createAlert(withTitle: title, andMessage: "Task:alert.message".localized() )
         
         alert.action(with: task) { newValue, note in
             if let task = task, let completion = completion {

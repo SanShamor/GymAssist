@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Мои тренировки-->
+        <!--My workouts-->
         <scene sceneID="AXt-qy-Xex">
             <objects>
                 <tableViewController id="CTQ-sA-I7O" customClass="TaskListTVC" customModule="GymAssist" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,7 +57,7 @@
                             <outlet property="delegate" destination="CTQ-sA-I7O" id="NKa-jr-fLM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Мои тренировки" largeTitleDisplayMode="always" id="gIb-d0-gNC">
+                    <navigationItem key="navigationItem" title="My workouts" largeTitleDisplayMode="always" id="gIb-d0-gNC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8X8-us-HmU">
                             <connections>
                                 <action selector="addButtonPressed:" destination="CTQ-sA-I7O" id="aES-5n-PzH"/>
@@ -160,9 +160,10 @@
                                         <color key="backgroundColor" red="0.25343285339999999" green="0.81791325209999999" blue="0.63164529179999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </backgroundConfiguration>
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Сохранить результат">
+                                        <fragment content="Save result">
                                             <attributes>
                                                 <font key="NSFont" size="15" name="Thonburi-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -382,11 +383,11 @@
             </objects>
             <point key="canvasLocation" x="2151" y="-886"/>
         </scene>
-        <!--Тренировки-->
+        <!--Workouts-->
         <scene sceneID="Dl3-3q-Mdf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dL8-7e-1aw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Тренировки" image="list.star" catalog="system" id="bsX-me-KIx"/>
+                    <tabBarItem key="tabBarItem" title="Workouts" image="list.star" catalog="system" id="bsX-me-KIx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="7yx-90-pVr">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
@@ -438,25 +439,25 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height(SM)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-XT-liZ">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height(cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-XT-liZ">
                                                 <rect key="frame" x="20" y="717" width="156" height="34"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вес (кг):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGO-99-iTX">
-                                                <rect key="frame" x="309" y="685" width="80" height="26"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight (kg):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGO-99-iTX">
+                                                <rect key="frame" x="277.66666666666669" y="685" width="111.33333333333331" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight (KG)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vcv-7V-vEb">
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight (kg)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vcv-7V-vEb">
                                                 <rect key="frame" x="238.33333333333337" y="717" width="155.66666666666663" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рост (см):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-TJ-GVM">
-                                                <rect key="frame" x="24.999999999999993" y="685" width="95.333333333333314" height="26"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height (cm):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-TJ-GVM">
+                                                <rect key="frame" x="25.000000000000007" y="685" width="113.66666666666669" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -468,7 +469,7 @@
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemGray5Color"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Расчитать BMI">
+                                                <buttonConfiguration key="configuration" style="plain" title="Calculate BMI">
                                                     <backgroundConfiguration key="background" cornerRadius="15">
                                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                                     </backgroundConfiguration>
@@ -479,9 +480,9 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfY-hQ-kiF">
-                                                <rect key="frame" x="100.33333333333333" y="817" width="213.33333333333337" height="17"/>
+                                                <rect key="frame" x="129" y="817" width="156.33333333333337" height="17"/>
                                                 <attributedString key="attributedText">
-                                                    <fragment content="Для расчета введите ваши показатели">
+                                                    <fragment content="Enter your details to calculate">
                                                         <attributes>
                                                             <color key="NSColor" red="0.18897116180000001" green="0.60036945340000003" blue="0.46152645349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="17" name="DINCondensed-Bold"/>
@@ -518,13 +519,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rri-qb-n6D">
-                                                <rect key="frame" x="52.333333333333343" y="350" width="309.33333333333326" height="40"/>
+                                                <rect key="frame" x="113" y="350" width="188" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="rJK-k1-QxD"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemGray5Color"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Обновить данные о весе">
+                                                <buttonConfiguration key="configuration" style="plain" title="Update weight">
                                                     <backgroundConfiguration key="background" cornerRadius="15">
                                                         <color key="backgroundColor" red="0.31522381310000003" green="0.59010314939999997" blue="0.47057402129999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </backgroundConfiguration>
@@ -606,7 +607,7 @@
             </objects>
             <point key="canvasLocation" x="-106" y="-75"/>
         </scene>
-        <!--Item-->
+        <!--Results-->
         <scene sceneID="06W-AA-PMI">
             <objects>
                 <tableViewController id="YSa-Nk-TP6" customClass="HighscoresTVC" customModule="GymAssist" customModuleProvider="target" sceneMemberID="viewController">
@@ -645,7 +646,7 @@
                             <outlet property="delegate" destination="YSa-Nk-TP6" id="67m-gB-iFu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" image="clock.badge.checkmark" catalog="system" id="0Cv-GX-ZdD"/>
+                    <tabBarItem key="tabBarItem" title="Results" image="clock.badge.checkmark" catalog="system" id="0Cv-GX-ZdD"/>
                     <navigationItem key="navigationItem" id="WAy-UO-NoI"/>
                     <connections>
                         <outlet property="highScoreTabItem" destination="0Cv-GX-ZdD" id="FqL-Us-2sk"/>
